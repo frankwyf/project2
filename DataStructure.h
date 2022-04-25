@@ -13,7 +13,8 @@ int Column;
 int **Game;
 //the steps of the game
 int Step;
-
+//the file pointer to read and write from the file
+FILE *game;
 
 /*
   The following part is denfinitions of funtions
@@ -25,6 +26,8 @@ int map();
 void initialGame();
 //ask whether the user want to decide the steps or not
 int steps();
+//read in Game file
+int Readfile();
 
 
 

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <unistd.h>
 #include "DataStructure.h"
 
 //ask whether the user want to decide the steps or not
@@ -20,7 +21,15 @@ int steps(){
 		else{continue;}
 	}
     Step=atoi(step);
-    return Step;
+    //check the number is valid or not 
+    if (Step<0){
+        printf("\nInvalid Step number!\n\n");
+		return -1;
+    }
+    else{
+        printf("The Game of Life will evolute for %i generations.\n",Step);
+        return Step;
+    }
 }
 
 //read user input for size of the game
@@ -42,6 +51,11 @@ int map(){
 		else{continue;}
 	}
     Row=atoi(row);
+    //check the number is valid or not 
+    if (Row<1){
+        printf("\nInvalid Row number!\n\n");
+		return 1;
+    }
     printf("Enter columns of the Game (up to 10 digits):");
     fgets(column,42,stdin);
     column[strlen(column)-1]='\0';//get rid of the '\n' at the last of the input
@@ -53,8 +67,88 @@ int map(){
 		else{continue;}
 	}
     Column=atoi(column);
+    //check the number is valid or not 
+    if (Column<1){
+        printf("\nInvalid Row number!\n\n");
+		return 1;
+    }
+    //free the pointers
+    free(row);
+    free(column);
     return 0;
 }
+
+//read in Game file
+int Readfile(FILE *game){
+    game=fopen("Game.txt","r");
+    if (game!=NULL){
+        printf("\nReading in game file...\n\n");
+        //read the file in by line
+        char temp[1024];
+        char *read=fgets(temp,sizeof(temp),game);
+        if (read==NULL){
+            printf("\nEmpty game file found. Please configure the game by hand.\n");
+            return -1;
+        }
+        temp[strlen(temp)-1]='\0';
+        int count=0;
+        int len, index;
+        while (read!=NULL){
+            char *data=strtok(temp,",");
+            while (data!=NULL){
+                switch (count){
+                //read in rows
+                    case 0:
+                        len=strlen(data);
+	                        for (index=0;index<len;index++){
+		                        if (!isdigit(data[index])){
+			                        printf("\nBroken game file found. Please configure the game by hand.\n");
+		                            return -1;
+	                            }
+		                        else{continue;}
+	                        }
+				        Row=atoi(data);
+                        break;
+                    //read in columns
+                    case 1:
+                        len=strlen(data);
+	                        for (index=0;index<len;index++){
+		                        if (!isdigit(data[index])){
+			                        printf("\nBroken game file found. Please configure the game by hand.\n");
+		                            return -1;
+	                            }
+		                        else{continue;}
+	                        }
+				        Column=atoi(data);
+                        break;
+                    //read in the step of the game
+                    case 2:
+                        len=strlen(data);
+	                        for (index=0;index<len;index++){
+		                        if (!isdigit(data[index])){
+			                        printf("\nBroken game file found. Please configure the game by hand.\n");
+		                            return -1;
+	                            }
+		                        else{continue;}
+	                        }
+				        Step=atoi(data);
+                }
+                count+=1;
+                data=strtok(NULL,",");
+            }
+            //read in the next line
+            memset(temp, '\0', 1024);
+            read = fgets(temp,sizeof(temp),game);
+            temp[strlen(temp)-1]='\0';
+        }    
+    }
+    else{
+        //creat a file named "Game.txt"
+        game=fopen("Game.txt","wb");
+        printf("\n Game file lost!\n Creating a new one...\nManually configuration reqiured.\n\n");
+        return -1;
+    }
+} 
 
 //Create the initial game
 void initialGame(){

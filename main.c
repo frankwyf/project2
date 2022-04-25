@@ -6,8 +6,10 @@
 
 int main(int argc, char **argv){
     printf("Wlecome to Conway's Game of Life!\n");
+    Readfile();
     //confogure the size of the game by user input
     if (argc<3){
+        steps();
         //wait untile user input is valid
         while (map()==1){
             map();
@@ -17,7 +19,9 @@ int main(int argc, char **argv){
     }
     //configure size of game by commnad line argument 
     else{
-        steps();
+        while (steps()==-1){
+            steps();
+        }
         printf("Size of the game configured in commad line!\n");
         int j;
 	    for (j=0;j<strlen(argv[1]);j++){

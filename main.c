@@ -3,6 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 #include "DataStructure.h"
+#include "NextGenre.h"
 
 int main(int argc, char **argv){
     printf("Wlecome to Conway's Game of Life!\n");
@@ -11,8 +12,10 @@ int main(int argc, char **argv){
         //read the initial file in
         if (Readfile()==0){
             //ask the user whether to change the size of the game or not
-            printf("\nThe world is %i rows and %i columns\nDo you want to change (enter 'y' if you do)?\n",Row,Column);
-            char Option=getchar(); 
+            printf("\nThe world is %i rows and %i columns\nDo you want to change (enter 'y' if you do)?",Row,Column);
+            char Option=getchar();
+            //eat the \n at the end of the input
+            getchar(); 
             if (Option=='y'){
                 //wait untile user input is valid
                 while (map()==1){
@@ -31,7 +34,11 @@ int main(int argc, char **argv){
             initialGame();
         }
         //ask for steps
-        steps();
+        while (steps()==-1){
+            steps();
+        }
+        //play the game
+        NextGen(Game);
     }
     //configure size of game by commnad line argument 
     else{

@@ -4,6 +4,8 @@
 #include <ctype.h>
 #include <unistd.h>
 #include "DataStructure.h"
+#include "Check.h"
+#include "NextGenre.h"
 
 //ask whether the user want to decide the steps or not
 int steps(){
@@ -35,7 +37,6 @@ int steps(){
 
 //read user input for size of the game
 int map(){
-    steps();
     //two char pointers to store user input and check whether they are vaild or not
     char *row=(char *)malloc(sizeof(int)*3 + sizeof(char));
     char *column=(char *)malloc(sizeof(int)*10+sizeof(char));
@@ -65,7 +66,7 @@ int map(){
     }
     printf("Enter columns of the Game (up to 10 digits):");
     fgets(column,42,stdin);
-    if (row[strlen(column)-1]!='\n'){
+    if (column[strlen(column)-1]!='\n'){
         printf("\nOver 999 columns! Screen can't hold that much!\n");
         return 1;
     }
@@ -153,11 +154,34 @@ int Readfile(FILE *game){
             memset(temp, '\0', 1024);
             read = fgets(temp,sizeof(temp),game);
             temp[strlen(temp)-1]='\0';
+            free(data);
         }
-        //read in the map
-        int i;
+        //create the map
+        Game=(int **)malloc(sizeof(int)*Row);
+        int x;
+        for (x=0;x<Row;x++){
+            Game[x]=(int *)malloc(sizeof(int)*Column);
+        }
+        int i,j;
         for (i=0;i<Column;i++){
+            //read in the next line
+            memset(temp, '\0', 1024);
+            read = fgets(temp,sizeof(temp),game);
+            temp[strlen(temp)-1]='\0';
+            char *cell=strtok(temp,",");
+            while (cell!=NULL){
+                //read in the data by row
+                for (j=0;j<Column;j++){
+                    Game[i][j]=atoi(cell);
+                    cell=strtok(NULL,",");
+                    printf("%d,",Game[i][j]);
+                }
+            }
+            printf("\n");
+            free(cell);
+            //free(read);
         }
+        return 0;
     }
     else{
         //creat a file named "Game.txt"
@@ -181,4 +205,120 @@ void initialGame(){
         }
     printf("\n");
     }
+}
+/*
+  The follwing part will be 8 functions that check the 8 nighbours of a target cell
+  Neighbours outside the boundary are assumed dead
+*/
+int CheckUp(int **Game,int i,int j){
+    if (i==0){
+        return 0;
+    }
+    else{
+        return Game[i-1][j];
+    }
+}
+int CheckDown(int **Game,int i,int j){
+    if (i==Row-1){
+        return 0;
+    }
+    else{
+        return Game[i+1][j];
+    }
+}
+int CheckLeft(int **Game,int i,int j){
+    if (j==0){
+        return 0;
+    }
+    else{
+        return Game[i][j-1];
+    }
+}
+int CheckRight(int **Game,int i,int j){
+    if (j==Column-1){
+        return 0;
+    }
+    else{
+        return Game[i][j+1];
+    }
+}
+int CheckUpRight(int **Game,int i,int j){
+    if (i==0){
+        return 0;
+    }   
+    if (j==Column-1){
+        return 0;
+    }
+    else{
+        return Game[i-1][j+1];
+    } 
+}
+int CheckUpLeft(int **Game,int i,int j){
+    if (i==0){
+        return 0;
+    }
+    if (j==0){
+        return 0;
+    }
+    else{
+        return Game[i-1][j-1];
+    }
+}
+int CheckDownLeft(int **Game,int i,int j){
+    if (i==Row-1){
+        return 0;
+    }
+    if (j==0){
+        return 0;
+    }
+    else{
+        return Game[i+1][j-1];
+    }
+}
+int CheckDownRight(int **Game,int i,int j){
+    if (i==Row-1){
+        return 0;
+    }
+    if (j==Column-1){
+        return 0;
+    }
+    else{
+        return Game[i+1][j+1];
+    }
+}
+
+//Generate the new generation
+int Evolution(int **Game, int i, int j){
+    int Neighbours = CheckUp(Game,i,j) + CheckDown(Game,i,j) 
+                    + CheckLeft(Game,i,j) + CheckRight(Game,i,j)
+                    + CheckUpRight(Game,i,j) + CheckUpLeft(Game,i,j)
+                    + CheckDownLeft(Game,i,j) + CheckDownRight(Game,i,j);
+    if (Game[i][j]==0){
+        if (Neighbours==3){
+            return 1;
+        }
+        else{
+            return 0;
+        }
+    }
+    if (Neighbours==2 || Neighbours==3){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+
+//going through the whole map
+int NextGen(int **Game){
+    int x,y;
+    for (x=0;x<Row;x++){
+        for (y=0;y<Column;y++){
+            //put the new generation into the map
+            Game[x][y]=Evolution(Game,x,y);
+            printf("%d,",Game[x][y]);
+        }
+        printf("\n");
+    }
+    return 0;
 }

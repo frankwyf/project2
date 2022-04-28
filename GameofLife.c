@@ -96,7 +96,7 @@ int map(){
 int Readfile(FILE *game){
     game=fopen("Game.txt","r");
     if (game!=NULL){
-        printf("\nReading in game file...\n\n");
+        printf("\nReading in game file...\n");
         //read the file in by line
         char temp[1024];
         char *read=fgets(temp,sizeof(temp),game);
@@ -174,10 +174,8 @@ int Readfile(FILE *game){
                 for (j=0;j<Column;j++){
                     Game[i][j]=atoi(cell);
                     cell=strtok(NULL,",");
-                    printf("%d,",Game[i][j]);
                 }
             }
-            printf("\n");
             free(cell);
             //free(read);
         }
@@ -310,15 +308,22 @@ int Evolution(int **Game, int i, int j){
 }
 
 //going through the whole map
-int NextGen(int **Game){
+void NextGen(int **map){
     int x,y;
+    map=(int **)malloc(sizeof(int)*Row);
     for (x=0;x<Row;x++){
+        map[x]=(int *)malloc(sizeof(int)*Column);
         for (y=0;y<Column;y++){
             //put the new generation into the map
-            Game[x][y]=Evolution(Game,x,y);
-            printf("%d,",Game[x][y]);
+            map[x][y]=Evolution(Game,x,y);
+            printf("%d,",map[x][y]);
         }
         printf("\n");
     }
-    return 0;
+    //put the cells of the next generation back to Game to keep the game going 
+    for (x=0;x<Row;x++){
+        for (y=0;y<Column;y++){
+            Game[x][y]=map[x][y];
+        }
+    }
 }

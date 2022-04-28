@@ -6,5 +6,5 @@
   2. going through the whole map 
 */
 int Evolution(int **Game, int i, int j);
-int NextGen(int **Game);
+void NextGen(int **Game);
 #endif

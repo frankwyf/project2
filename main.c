@@ -22,11 +22,20 @@ int main(int argc, char **argv){
                     map();
                 }
                 //create the initial map
+                printf("Initialzing new game with size: %i X %i...\nStep 0:",Row,Column);
                 initialGame();
             }
             else{
-                printf("\nGame continue with size %i x %i.\n",Row,Column);
-                printf("\nStill want to change size? Restart the game.\n");
+                printf("\nGame continue with size %i X %i.\nStep 0:\n",Row,Column);
+                //print the initial game
+                int i,j;
+                for (i=0;i<Row;i++){
+                    for (j=0;j<Column;j++){
+                        printf("%d,",Game[i][j]);
+                    }
+                    printf("\n");
+                }
+                printf("Still want to change size? Restart the game.\n\n");
             }
         }
         //if file read in failed, start a new game
@@ -38,7 +47,12 @@ int main(int argc, char **argv){
             steps();
         }
         //play the game
-        NextGen(Game);
+        int move;
+        for (move=0;move<Step;move++){
+            printf("Step: %d\n",move+1);
+            NextGen(NextGeneration);
+            printf("\n");
+        }
     }
     //configure size of game by commnad line argument 
     else{

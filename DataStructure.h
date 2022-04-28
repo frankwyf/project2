@@ -9,8 +9,10 @@
 int Row;
 //the variable to store the lenght of the game
 int Column;
-//the game borad
+//the initial game borad,updated every time after evolution
 int **Game;
+//the game borad after evolution 
+int **NextGeneration;
 //the steps of the game
 int Step;
 //the file pointer to read and write from the file

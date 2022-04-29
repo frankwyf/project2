@@ -29,8 +29,8 @@ void initialGame();
 //ask whether the user want to decide the steps or not
 int steps();
 //read in Game file
-int Readfile();
-
-
+int Readfile(FILE *game);
+//write the result back
+int WriteResult(FILE *game);
 
 #endif

@@ -4,15 +4,20 @@
 #include <ctype.h>
 #include "DataStructure.h"
 #include "NextGenre.h"
+#include <time.h>
 
 int main(int argc, char **argv){
-    printf("Wlecome to Conway's Game of Life!\n");
+    time_t t;
+    struct tm * lt;
+    time (&t);//get Unix time
+    lt = localtime (&t);//turn into time struct
+    printf("%d/%d/%d %d:%d:%d\nWelcome to Conway's Game of Life!\n",lt->tm_year+1900, lt->tm_mon+1, lt->tm_mday, lt->tm_hour, lt->tm_min, lt->tm_sec);
     //confogure the size of the game by user input
     if (argc<3){
         //read the initial file in
-        if (Readfile()==0){
+        if (Readfile(game)==0){
             //ask the user whether to change the size of the game or not
-            printf("\nThe world is %i rows and %i columns\nDo you want to change (enter 'y' if you do)?",Row,Column);
+            printf("\nLast game is %i rows and %i columns\nDo you want to change (enter 'y' if you do)?",Row,Column);
             char Option=getchar();
             //eat the \n at the end of the input
             getchar(); 
@@ -39,7 +44,7 @@ int main(int argc, char **argv){
             }
         }
         //if file read in failed, start a new game
-        else if (Readfile()==-1){
+        else if (Readfile(game)==-1){
             initialGame();
         }
         //ask for steps
@@ -47,17 +52,36 @@ int main(int argc, char **argv){
             steps();
         }
         //play the game
-        int move;
-        for (move=0;move<Step;move++){
-            printf("Step: %d\n",move+1);
-            NextGen(NextGeneration);
-            printf("\n");
+        if (Step!=0){
+            int move;
+            for (move=0;move<Step;move++){
+                printf("Step: %d\n",move+1);
+                NextGen(NextGeneration);
+                printf("\n");
+            }
         }
+        else{
+            printf("Infinite steps! Termiante the game when you want.\n");
+            int life;
+            while (1){
+                printf("Step: %d\n",life);
+                NextGen(NextGeneration);
+                life++;
+                printf("\n");
+            }
+        }
+        //write the result 
+        if (WriteResult(game)==-1){
+           printf("Exit without saving at: %d/%d/%d %d:%d:%d\n",lt->tm_year+1900, lt->tm_mon+1, lt->tm_mday, lt->tm_hour, lt->tm_min, lt->tm_sec);
+        }
+        else{
+            printf("Game saved at: %d/%d/%d %d:%d:%d\n",lt->tm_year+1900, lt->tm_mon+1, lt->tm_mday, lt->tm_hour, lt->tm_min, lt->tm_sec);
+        }  
     }
     //configure size of game by commnad line argument 
     else{
         //read in initial file
-        Readfile();
+        Readfile(game);
         printf("Size of the game configured in commad line!\n");
         int j;
 	    for (j=0;j<strlen(argv[1]);j++){
@@ -90,6 +114,32 @@ int main(int argc, char **argv){
         while (steps()==-1){
             steps();
         }
-    }    
+        //play the game
+        if (Step!=0){
+            int move;
+            for (move=0;move<Step;move++){
+                printf("Step: %d\n",move+1);
+                NextGen(NextGeneration);
+                printf("\n");
+            }
+        }
+        else{
+            printf("Infinite steps! Termiante the game when you want.\n");
+            int life;
+            while (1){
+                printf("Step: %d\n",life);
+                NextGen(NextGeneration);
+                life++;
+                printf("\n");
+            }
+        } 
+        //write the result 
+        if (WriteResult(game)==-1){
+           printf("Exit without saving at:%d/%d/%d %d:%d:%d\n",lt->tm_year+1900, lt->tm_mon+1, lt->tm_mday, lt->tm_hour, lt->tm_min, lt->tm_sec);
+        }
+        else{
+            printf("Game saved at:%d/%d/%d %d:%d:%d\n",lt->tm_year+1900, lt->tm_mon+1, lt->tm_mday, lt->tm_hour, lt->tm_min, lt->tm_sec);
+        }
+    }   
     return 0;
 }

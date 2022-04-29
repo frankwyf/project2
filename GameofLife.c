@@ -327,3 +327,34 @@ void NextGen(int **map){
         }
     }
 }
+
+//write the result back
+int WriteResult(FILE *game){
+    game=fopen("Game.txt","w");
+    //if the file is missing, crete a new one
+    if (game==NULL){
+        game=fopen("Game.txt","wb");
+    }
+    //write in the result
+    fprintf(game,"%i,%i,%i\n\n",Row,Column,Step);
+    int x,y;
+    for (x=0;x<Row;x++){
+        for (y=0;y<Column;y++){
+            if (y!=Column-1){
+                fprintf(game,"%i,",Game[x][y]);
+            }
+            else{
+                fprintf(game,"%i\n",Game[x][y]);
+            }
+        }
+    }
+    fclose(game);
+    if (ferror(game)){
+        printf("Faild to stroe last game!\nData lost.\n");
+        return -1;
+    }
+    else{
+        printf("Data saved successfully! \nGood Bye!\n");
+        return 0;
+    }
+}

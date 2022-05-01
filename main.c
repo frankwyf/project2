@@ -2,9 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <time.h>
 #include "DataStructure.h"
 #include "NextGenre.h"
-#include <time.h>
+
 
 int main(int argc, char **argv){
     time_t t;
@@ -27,7 +28,7 @@ int main(int argc, char **argv){
                     map();
                 }
                 //create the initial map
-                printf("Initialzing new game with size: %i X %i...\nStep 0:",Row,Column);
+                printf("Initialzing new game with size: %i X %i...\nStep 0:\n",Row,Column);
                 initialGame();
             }
             else{
@@ -48,6 +49,7 @@ int main(int argc, char **argv){
             initialGame();
         }
         //ask for steps
+        printf("Last game stopped at step %i.\n",Step);
         while (steps()==-1){
             steps();
         }
@@ -62,7 +64,7 @@ int main(int argc, char **argv){
         }
         else{
             printf("Infinite steps! Termiante the game when you want.\n");
-            int life;
+            int life=1;
             while (1){
                 printf("Step: %d\n",life);
                 NextGen(NextGeneration);
@@ -125,7 +127,7 @@ int main(int argc, char **argv){
         }
         else{
             printf("Infinite steps! Termiante the game when you want.\n");
-            int life;
+            int life=1;
             while (1){
                 printf("Step: %d\n",life);
                 NextGen(NextGeneration);

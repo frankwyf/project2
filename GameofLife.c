@@ -3,6 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <unistd.h>
+#include <windows.h>
 #include "DataStructure.h"
 #include "Check.h"
 #include "NextGenre.h"
@@ -156,35 +157,33 @@ int Readfile(FILE *game){
             temp[strlen(temp)-1]='\0';
             free(data);
         }
-        //create the map
-        Game=(int **)malloc(sizeof(int)*Row);
-        int x;
-        for (x=0;x<Row;x++){
-            Game[x]=(int *)malloc(sizeof(int)*Column);
-        }
         int i,j;
-        for (i=0;i<Column;i++){
+        Game=(int **)malloc(sizeof(*Game)*Row);
+        for (i=0;i<Row;i++){
             //read in the next line
             memset(temp, '\0', 1024);
             read = fgets(temp,sizeof(temp),game);
             temp[strlen(temp)-1]='\0';
             char *cell=strtok(temp,",");
-            while (cell!=NULL){
-                //read in the data by row
-                for (j=0;j<Column;j++){
-                    Game[i][j]=atoi(cell);
-                    cell=strtok(NULL,",");
-                }
+            Game[i]=(int *)malloc(sizeof(**Game)*Column);
+            //read in the data by row
+            for (j=0;j<Column;j++){
+                Game[i][j]=atoi(cell);
+                cell=strtok(NULL,",");
+                printf("%d,",Game[i][j]);
             }
+            printf("\n");
             free(cell);
-            //free(read);
         }
+        printf("OK");
+        fclose(game);
         return 0;
     }
     else{
         //creat a file named "Game.txt"
         game=fopen("Game.txt","wb");
         printf("\n Game file lost!\n Creating a new one...\nManually configuration reqiured.\n\n");
+        fclose(game);
         return -1;
     }
 } 
@@ -193,9 +192,9 @@ int Readfile(FILE *game){
 void initialGame(){
     int i,j;
     //create a two dimensional array to be used as the Game borad
-    Game=(int **)malloc(sizeof(int)*Row);
+    Game=(int **)malloc(sizeof(*Game)*Row);
     for (i=0;i<Row;i++){
-        Game[i]=(int *)malloc(sizeof(int)*Column);
+        Game[i]=(int *)malloc(sizeof(**Game)*Column);
         for (j=0;j<Column;j++){
             //initail state of the game with random 0s and 1 s
             Game[i][j]=rand()%2;
@@ -326,6 +325,8 @@ void NextGen(int **map){
             Game[x][y]=map[x][y];
         }
     }
+    //make the evolution 3 seconds pertime (windows:Sleep, linux:sleep)
+    Sleep(2000);
 }
 
 //write the result back
@@ -337,14 +338,14 @@ int WriteResult(FILE *game){
     }
     //write in the result
     fprintf(game,"%i,%i,%i\n\n",Row,Column,Step);
-    int x,y;
-    for (x=0;x<Row;x++){
-        for (y=0;y<Column;y++){
-            if (y!=Column-1){
-                fprintf(game,"%i,",Game[x][y]);
+    int i,j;
+    for (i=0;i<Row;i++){
+        for (j=0;j<Column;j++){
+            if (j!=Column-1){
+                fprintf(game,"%i,",Game[i][j]);
             }
             else{
-                fprintf(game,"%i\n",Game[x][y]);
+                fprintf(game,"%i\n",Game[i][j]);
             }
         }
     }

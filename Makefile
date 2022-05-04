@@ -2,7 +2,7 @@
 # code details
 
 EXE_DIR = .
-EXE = $(EXE_DIR)/GameOfLife
+EXE = $(EXE_DIR)/game
 
 SRC= main.c GameOfLife.c
 

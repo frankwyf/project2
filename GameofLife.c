@@ -10,9 +10,9 @@
 
 //ask whether the user want to decide the steps or not
 int steps(){
-    printf("Do you want to decide how many steps the game displays?\nEnter a number (up to 3 digits) if you want: ");
-    char *step=(char *)malloc(sizeof(int)*3 + sizeof(char));
-    fgets(step,14,stdin);
+    printf("Do you want to decide how many steps the game displays?\nEnter a number if you want: ");
+    char *step=(char *)malloc(sizeof(int) + sizeof(char));
+    fgets(step,5,stdin);
     step[strlen(step)-1]='\0';
     int i;
     for (i=0;i<strlen(step);i++){
@@ -39,18 +39,12 @@ int steps(){
 //read user input for size of the game
 int map(){
     //two char pointers to store user input and check whether they are vaild or not
-    char *row=(char *)malloc(sizeof(int)*3 + sizeof(char));
-    char *column=(char *)malloc(sizeof(int)*10+sizeof(char));
+    char *row=(char *)malloc(sizeof(int) + sizeof(char));
+    char *column=(char *)malloc(sizeof(int) + sizeof(char));
     //get user input and check if it is valid or not
-    printf("Enter Rows of the Game (up to 3 digits):");
-    fgets(row,14,stdin);
-    if (row[strlen(row)-1]!='\n'){
-        printf("\nOver 999 rows! Screen can't hold that much!\n");
-        return 1;
-    }
-    else{
-        row[strlen(row)-1]='\0';//get rid of the '\n' at the last of the input
-    } 
+    printf("Enter Rows of the Game (up to 1024):");
+    fgets(row,5,stdin);
+    row[strlen(row)-1]='\0';//get rid of the '\n' at the last of the input 
 	int j;
 	for (j=0;j<strlen(row);j++){
 		if (!isdigit(row[j])){
@@ -60,21 +54,19 @@ int map(){
 		else{continue;}
 	}
     Row=atoi(row);
-    //check the number is valid or not 
-    if (Row<2){
-        printf("\nInvalid Row number!\n\n");
-		return 1;
-    }
-    printf("Enter columns of the Game (up to 10 digits):");
-    fgets(column,42,stdin);
-    if (column[strlen(column)-1]!='\n'){
-        printf("\nOver 999 columns! Screen can't hold that much!\n");
+    if (Row>1024){
+        printf("Over 1024 rows! Screen can't hold that much!\n");
         return 1;
     }
-    else{
-        column[strlen(column)-1]='\0';//get rid of the '\n' at the last of the input
+    //check the number is valid or not 
+    if (Row<2){
+        printf("\nInvalid Row number!\n");
+		return 1;
     }
-	for (j=0;j<strlen(row);j++){
+    printf("Enter columns of the Game (up to 1024):");
+    fgets(column,42,stdin);
+    column[strlen(column)-1]='\0';//get rid of the '\n' at the last of the input
+	for (j=0;j<strlen(column);j++){
 		if (!isdigit(column[j])){
 			printf("\nOnly numbers are allowed!\n");
 			return 1;
@@ -82,9 +74,13 @@ int map(){
 		else{continue;}
 	}
     Column=atoi(column);
+    if (Column>1024){
+        printf("Over 1024 columns! Screen can't hold that much!\n");
+        return 1;
+    }
     //check the number is valid or not 
     if (Column<2){
-        printf("\nInvalid Row number!\n\n");
+        printf("\nInvalid Row number!\n");
 		return 1;
     }
     //free the pointers
@@ -168,21 +164,30 @@ int Readfile(FILE *game){
             Game[i]=(int *)malloc(sizeof(**Game)*Column);
             //read in the data by row
             for (j=0;j<Column;j++){
-                Game[i][j]=atoi(cell);
-                cell=strtok(NULL,",");
-                printf("%d,",Game[i][j]);
+                for (index=0;index<strlen(cell);index++){
+                    if (!isdigit(cell[index])){
+                        printf("\nInvalid cell found. Please configure the game by hand.\n");
+		                return -1;
+                    }
+                }
+                if (atoi(cell)!=1 && atoi(cell)!=0){
+                    printf("\nInvalid cell found. Please configure the game by hand.\n");
+		            return -1;
+                }
+                else{
+                    Game[i][j]=atoi(cell);
+                    cell=strtok(NULL,",");
+                }
             }
-            printf("\n");
             free(cell);
         }
-        printf("OK");
         fclose(game);
         return 0;
     }
     else{
         //creat a file named "Game.txt"
         game=fopen("Game.txt","wb");
-        printf("\n Game file lost!\n Creating a new one...\nManually configuration reqiured.\n\n");
+        printf("\nGame file lost!\nCreating a new one...\nManually configuration reqiured.\n\n");
         fclose(game);
         return -1;
     }
@@ -198,7 +203,7 @@ void initialGame(){
         for (j=0;j<Column;j++){
             //initail state of the game with random 0s and 1 s
             Game[i][j]=rand()%2;
-            printf("%d,",Game[i][j]);
+            printf("%d ",Game[i][j]);
         }
     printf("\n");
     }
@@ -315,7 +320,7 @@ void NextGen(int **map){
         for (y=0;y<Column;y++){
             //put the new generation into the map
             map[x][y]=Evolution(Game,x,y);
-            printf("%d,",map[x][y]);
+            printf("%d ",map[x][y]);
         }
         printf("\n");
     }
@@ -327,6 +332,40 @@ void NextGen(int **map){
     }
     //make the evolution 3 seconds pertime (windows:Sleep, linux:sleep)
     Sleep(2000);
+}
+
+//the function to print every step of the game
+void ShowGen(){
+    //play the game
+    if (Step!=0){
+        int move;
+        for (move=0;move<Step;move++){
+            printf("Step: %d\n",move+1);
+            NextGen(NextGeneration);
+            printf("\n-----------------------------\n\n");
+        }
+    }
+    else{
+        printf("Infinite steps! Termiante the game when you want.\n");
+        int life=1;
+        while (1){
+            printf("Step: %d\n",life);
+            NextGen(NextGeneration);
+            life++;
+            printf("\n-----------------------------\n\n");
+        }
+    } 
+}
+
+void PrintMap(){
+    //print the initial game
+    int i,j;
+    for (i=0;i<Row;i++){
+        for (j=0;j<Column;j++){
+            printf("%d ",Game[i][j]);
+        }
+        printf("\n");
+    }
 }
 
 //write the result back

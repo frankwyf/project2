@@ -32,5 +32,6 @@ int steps();
 int Readfile(FILE *game);
 //write the result back
 int WriteResult(FILE *game);
-
+//print stable game map
+void PrintMap();
 #endif

@@ -3,10 +3,13 @@
 #include <string.h>
 #include <ctype.h>
 #include <time.h>
-//#include <SDL2/SDL.h>
+#include <SDL2/SDL.h>
 #include "DataStructure.h"
 #include "NextGenre.h"
+#include "GameWindow.h"
 
+//undefine the keyword "main" in SDL_main
+#undef main
 
 int main(int argc, char **argv){
     time_t t;

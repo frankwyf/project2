@@ -9,10 +9,16 @@
                 "-g",
                 "D:\\programming_project\\CWK2\\code\\*.c",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                "D:\\programming_project\\CWK2\\code\\main.exe",
+                "-ID:/SDL2/x86_64-w64-mingw32/include",
+                "-LD:/SDL2/x86_64-w64-mingw32/lib",
+                "-lmingw32",
+                "-lSDL2main",
+                "-lSDL2",
+                "-mwindows"
             ],
             "options": {
-                "cwd": "${fileDirname}"
+                "cwd": "D:\\mingw64\\bin"
             },
             "problemMatcher": [
                 "$gcc"

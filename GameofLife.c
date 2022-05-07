@@ -7,6 +7,7 @@
 #include "DataStructure.h"
 #include "Check.h"
 #include "NextGenre.h"
+#include "GameWindow.h"
 
 //ask whether the user want to decide the steps or not
 int steps(){
@@ -342,6 +343,7 @@ void ShowGen(){
         for (move=0;move<Step;move++){
             printf("Step: %d\n",move+1);
             NextGen(NextGeneration);
+            envolve(Game,renderer);
             printf("\n-----------------------------\n\n");
         }
     }

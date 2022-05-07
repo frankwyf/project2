@@ -3,17 +3,36 @@
 #include <time.h>
 #include <SDL2/SDL.h>
 #include "GameWindow.h"
+#include "DataStructure.h"
 
 void InitWindow(){
-    SDL_Window *window = NULL;
-    //check the window can be initialized or not 
-    if (SDL_Init(SDL_INIT_VIDEO) != 0){
-        fprintf(stderr, "SDL_Init: %s\n", SDL_GetError());
+    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
+        printf("SDL Init Failed\n");
+        exit(EXIT_FAILURE);
     }
-    //clean up when exit
-    atexit(SDL_Quit);
-    //crete the window and set attributes like title,colour and characters
-    SDL_CreateWindowAndRenderer(1000,600,0,&window,&renderer);
-    SDL_SetWindowTitle(window, "Conway's Game of Life");
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); 
+    SDL_Window *win = SDL_CreateWindow("Game Of Life", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN);
+    if (win == NULL) {
+        printf("Window creation Failed\n");
+        exit(EXIT_FAILURE);
+    }
+    SDL_Renderer *renderer = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    if (renderer == NULL) {
+        printf("Renderer creation Failed\n");
+        exit(EXIT_FAILURE);
+    }
+}
+void envolve(int **Game,SDL_Renderer *renderer){
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_RenderClear(renderer);
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    int i,j;
+    for (i=0;i<Row;i++){
+        for (j=0;j<Column;j++){
+            if (Game[i][j]==1){
+                SDL_Rect point = {i, j, 1, 1};
+                SDL_RenderFillRect(renderer, &point);
+            }
+            else{continue;}
+        }
+    }
 }

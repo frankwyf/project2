@@ -4,13 +4,13 @@
 EXE_DIR = .
 EXE = $(EXE_DIR)/game
 
-SRC= main.c GameOfLife.c
+SRC= main.c GameOfLife.c Show.c
 
 # generic build details
 
 CC =     gcc
 CFLAGS = -Wall -O
-LIBS =   -lSDL2 -lSDL2_image
+LIBS =   -lSDL2 -lSDL2_image -mwindows
 
 SDLDIR = D:\SDL2
 # compile to  object code
@@ -32,6 +32,6 @@ clean:
 
 # dependencies
 
-main.o:  main.c DataStructure.h NextGenre.h
-GameOfLife.o:  GameOfLife.c DataStructure.h NextGenre.h Check.h
-
+main.o:  main.c DataStructure.h NextGenre.h GameWindow.h
+GameOfLife.o:  GameOfLife.c DataStructure.h NextGenre.h Check.h GameWindow.h
+Shwo.o: Show.c DataStructure.h GameWindow.h

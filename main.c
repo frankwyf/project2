@@ -7,8 +7,6 @@
 #include "DataStructure.h"
 #include "NextGenre.h"
 #include "GameWindow.h"
-
-//undefine the keyword "main" in SDL_main
 #undef main
 
 int main(int argc, char **argv){
@@ -16,6 +14,7 @@ int main(int argc, char **argv){
     struct tm * lt;
     time (&t);//get Unix time
     lt = localtime (&t);//turn into time struct
+    InitWindow();
     printf("%d/%d/%d %d:%d:%d\nWelcome to Conway's Game of Life!\n",lt->tm_year+1900, lt->tm_mon+1, lt->tm_mday, lt->tm_hour, lt->tm_min, lt->tm_sec);
     //confogure the size of the game by user input
     if (argc<3){

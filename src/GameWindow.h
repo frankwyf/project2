@@ -5,10 +5,18 @@
   This head file is used to store the functions and variables 
   used in SDL windows and renders
 */
-SDL_Renderer *renderer;
+//SDL window pointer
+SDL_Window *window;
+//SDL surface pointer
+SDL_Surface *surface;
+//SDL event
+SDL_Event e;
+//SDL render
+SDL_Renderer *render;
+
 //the function to initialize a window for display
-void InitWindow();
+int InitWindow();
 //the function to show next generation in SDL mode
-void envolve(int **Game,SDL_Renderer *renderer);
+void show(int **Game);
 
 #endif

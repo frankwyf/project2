@@ -4,6 +4,7 @@
 #include <ctype.h>
 #include <unistd.h>
 #include <windows.h>
+#include <stdbool.h>
 #include "DataStructure.h"
 #include "Check.h"
 #include "NextGenre.h"
@@ -97,7 +98,7 @@ int map(){
 int Readfile(FILE *game){
     game=fopen("Game.txt","r");
     if (game!=NULL){
-        printf("\nReading in game file...\n");
+        printf("Reading in game file...\n");
         //read the file in by line
         char temp[1024];
         char *read=fgets(temp,sizeof(temp),game);
@@ -335,7 +336,7 @@ void NextGen(int **map){
         }
     }
     //make the evolution 2000 milliseconds pertime (windows:Sleep, linux:sleep)
-    Sleep(2000);
+    Sleep(1000);
 }
 
 //the function to print every step of the game
@@ -346,18 +347,33 @@ void ShowGen(){
         for (move=0;move<Step;move++){
             printf("Step: %d\n",move+1);
             NextGen(NextGeneration);
-            envolve(Game,renderer);
             printf("\n-----------------------------\n\n");
+            show(Game);
         }
     }
     else{
         printf("Infinite steps! Termiante the game when you want.\n");
         int life=1;
-        while (1){
-            printf("Step: %d\n",life);
-            NextGen(NextGeneration);
-            life++;
-            printf("\n-----------------------------\n\n");
+        bool quit = false;
+        while (!quit) {
+	        while (SDL_PollEvent(&e) != 0) {
+                printf("Step: %d\n",life);
+                NextGen(NextGeneration);
+                life++;
+                printf("\n-----------------------------\n\n");
+                show(Game);
+		        switch (e.type) {
+                    //press any key to terminate the programme
+		            case SDL_KEYDOWN:
+			            quit = true;
+			            break;
+                    //use mouse to press exit button
+		            case SDL_QUIT:
+		            case SDL_MOUSEBUTTONDOWN:
+			            quit = true;
+			            break;
+		        }
+	        }
         }
     } 
 }

@@ -16,7 +16,7 @@ int main(int argc, char **argv){
     time (&t);//get Unix time
     lt = localtime (&t);//turn into time struct
     printf("%d/%d/%d %d:%d:%d\nWelcome to Conway's Game of Life!\n",lt->tm_year+1900, lt->tm_mon+1, lt->tm_mday, lt->tm_hour, lt->tm_min, lt->tm_sec);
-    //confogure the size of the game by user input
+    //configure the size of the game by user input
     if (argc<3){
         //read the initial file in
         if (Readfile(game)==-1){
@@ -45,24 +45,19 @@ int main(int argc, char **argv){
             else{
                 printf("\nGame continue with size %i X %i.\nStep 0:\n",Row,Column);
                 PrintMap();
-                printf("Still want to change size? Restart the game.\n");
+            }
+            //ask for steps
+            printf("Last game stopped at step %i.\n",Step);
+            while (steps()==-1){
+                steps();
             }
         }
-        //ask for steps
-        printf("Last game stopped at step %i.\n",Step);
-        while (steps()==-1){
-            steps();
-        }
+        //init SDL window
         InitWindow();
+        //show first stage
+        show(Game);
         //show every genertaion of the game
-        ShowGen();
-        //write the result 
-        if (WriteResult(game)==-1){
-           printf("Exit without saving at: %d/%d/%d %d:%d:%d\n",lt->tm_year+1900, lt->tm_mon+1, lt->tm_mday, lt->tm_hour, lt->tm_min, lt->tm_sec);
-        }
-        else{
-            printf("Game saved at: %d/%d/%d %d:%d:%d\n",lt->tm_year+1900, lt->tm_mon+1, lt->tm_mday, lt->tm_hour, lt->tm_min, lt->tm_sec);
-        }  
+        ShowGen();  
     }
     //configure size of game by commnad line argument 
     else{
@@ -98,6 +93,9 @@ int main(int argc, char **argv){
                 printf("Step 0:\n");
                 PrintMap();
             }
+            //init SDL window
+            InitWindow();
+            show(Game);
         }
         else{
             Row=atoi(argv[1]);
@@ -109,15 +107,22 @@ int main(int argc, char **argv){
         while (steps()==-1){
             steps();
         }
+        //init SDL window
+        InitWindow();
+        //show first stage
+        show(Game);
         //show every genertaion of the game
         ShowGen();
-        //write the result 
-        if (WriteResult(game)==-1){
-            printf("Exit without saving at:%d/%d/%d %d:%d:%d\n",lt->tm_year+1900, lt->tm_mon+1, lt->tm_mday, lt->tm_hour, lt->tm_min, lt->tm_sec);
-        }
-        else{
-            printf("Game saved at:%d/%d/%d %d:%d:%d\n",lt->tm_year+1900, lt->tm_mon+1, lt->tm_mday, lt->tm_hour, lt->tm_min, lt->tm_sec);
-        }
-    }   
+    }
+    //write the result 
+    if (WriteResult(game)==-1){
+       printf("Exit without saving at: %d/%d/%d %d:%d:%d\n",lt->tm_year+1900, lt->tm_mon+1, lt->tm_mday, lt->tm_hour, lt->tm_min, lt->tm_sec);
+    }
+    else{
+        printf("Game saved at: %d/%d/%d %d:%d:%d\n",lt->tm_year+1900, lt->tm_mon+1, lt->tm_mday, lt->tm_hour, lt->tm_min, lt->tm_sec);
+    }
+    SDL_DestroyRenderer(render);
+    SDL_DestroyWindow(window);
+	SDL_Quit();   
     return 0;
 }

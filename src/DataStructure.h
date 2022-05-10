@@ -15,6 +15,8 @@ int **Game;
 int **NextGeneration;
 //the steps of the game
 int Step;
+//the steps of the game
+int Delay;
 //the file pointer to read and write from the file
 FILE *game;
 
@@ -34,4 +36,6 @@ int Readfile(FILE *game);
 int WriteResult(FILE *game);
 //print stable game map
 void PrintMap();
+//ask the player how fast it want the game to display
+int delay();
 #endif

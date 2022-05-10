@@ -29,29 +29,33 @@ int main(int argc, char **argv){
         }
         else{
             //ask the user whether to change the size of the game or not
-            printf("Current game is %i rows and %i columns\nDo you want to change (enter 'yes' or 'y' if you do)?",Row,Column);
+            printf("Current game is %i X %i and evolve at speed %i\nDo you want to change (enter 'yes' or 'y' if you do)?",Row,Column,Delay);
             char Option=getchar();
             //delete redundant keybord input stream
             fflush(stdin); 
             if (Option=='y'){
-                //wait untile user input is valid
+                //wait until user input is valid
                 while (map()==1){
                     map();
                 }
+                while (delay()==-1){
+                    delay();
+                }
                 //create the initial map
-                printf("Initialzing new game with size: %i X %i...\nStep 0:\n",Row,Column);
+                printf("Initialzing new game with size: %i X %i...\n",Row,Column);
                 initialGame();
             }
             else{
-                printf("\nGame continue with size %i X %i.\nStep 0:\n",Row,Column);
-                PrintMap();
+                printf("\nGame continue with size %i X %i.\n",Row,Column);
             }
-            //ask for steps
+            //ask for steps and
             printf("Last game stopped at step %i.\n",Step);
             while (steps()==-1){
                 steps();
             }
         }
+        printf("Step 0:\n");
+        PrintMap();
         //init SDL window
         InitWindow();
         //show first stage
@@ -89,24 +93,19 @@ int main(int argc, char **argv){
                 printf("Initialzing new game with size: %i X %i...\nStep 0:\n",Row,Column);
                 initialGame();
             }
-            else{
-                printf("Step 0:\n");
-                PrintMap();
-            }
-            //init SDL window
-            InitWindow();
-            show(Game);
         }
         else{
             Row=atoi(argv[1]);
             Column=atoi(argv[2]);
-            printf("Reopening a new game with given size %i X %i...\nStep 0:\n",Row,Column);
+            printf("Reopening a new game with given size %i X %i...\n",Row,Column);
             initialGame();
         }
         //take the steps form the player
         while (steps()==-1){
             steps();
         }
+        printf("Step 0:\n");
+        PrintMap();
         //init SDL window
         InitWindow();
         //show first stage

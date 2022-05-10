@@ -53,8 +53,8 @@ void show(int **Game){
 		for (x = 0; x < Column; x++ ) {
             //get the state of life for next stage
 			int state = Game[y][x];
-            //decide to fill a black or white block
-			int rgb = (state>0) ? 0x00 : 0xff;
+            //decide to fill a black or green block
+			int rgb = (state>0) ? 0xff : 0x00;
             //fill the window with filled rectangles
 			SDL_Rect square = {
 				.x = x * (600/Column),
@@ -66,11 +66,11 @@ void show(int **Game){
 			SDL_FillRect(
 				surface,
 				&square,
-				SDL_MapRGB(surface->format, rgb, rgb, rgb)
+				SDL_MapRGB(surface->format, 0, rgb, 0)
 			);
 		}
 	}
 	SDL_UpdateWindowSurface(window);
-    SDL_Delay(300);
+    SDL_Delay(Delay);
 }
 

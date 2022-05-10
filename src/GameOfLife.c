@@ -41,6 +41,32 @@ int steps(){
     }
 }
 
+//ask the player how fast it want the game to display
+int delay(){
+    printf("How fast do you want the evolution ? (enter in milliseconds):");
+    char *delay=(char *)malloc(sizeof(int) + sizeof(char));
+    fgets(delay,5,stdin);
+    delay[strlen(delay)-1]='\0';
+    int i;
+    for (i=0;i<strlen(delay);i++){
+		if (!isdigit(delay[i])){
+			printf("\nInvalid Input! try again.\n");
+			return -1;
+		}
+		else{continue;}
+	}
+    Delay=atoi(delay);
+    //check the number is valid or not 
+    if (Delay<0){
+        printf("\nInvalid Step number!\n");
+		return -1;
+    }
+    else{
+        printf("The Game of Life will evolute at %i millseconds.\n",Delay);
+        return Delay;
+    }
+}
+
 //read user input for size of the game
 int map(){
     //two char pointers to store user input and check whether they are vaild or not
@@ -148,6 +174,16 @@ int Readfile(FILE *game){
 		                        else{continue;}
 	                        }
 				        Step=atoi(data);
+                    case 3:
+                        len=strlen(data);
+	                        for (index=0;index<len;index++){
+		                        if (!isdigit(data[index])){
+			                        printf("\nBroken game file found. Please configure the game by hand.\n");
+		                            return -1;
+	                            }
+		                        else{continue;}
+	                        }
+				        Delay=atoi(data);
                 }
                 count+=1;
                 data=strtok(NULL,",");
@@ -208,9 +244,7 @@ void initialGame(){
         for (j=0;j<Column;j++){
             //initail state of the game with random 0s and 1 s
             Game[i][j]=rand()%2;
-            printf("%d ",Game[i][j]);
         }
-    printf("\n");
     }
 }
 /*
@@ -335,8 +369,8 @@ void NextGen(int **map){
             Game[x][y]=map[x][y];
         }
     }
-    //make the evolution 2000 milliseconds pertime (windows:Sleep, linux:sleep)
-    Sleep(1000);
+    //make the evolution "Delay" milliseconds pertime (the sleep function: windows->Sleep, linux->sleep)
+    Sleep(Delay);
 }
 
 //the function to print every step of the game
@@ -388,14 +422,14 @@ void ShowGen(){
                         printf("Terminated at step %i.\n",life);
 			            quit = true;
                         Step=life;
-			            break;
+			            return;
                     //use mouse to press exit button
 		            case SDL_QUIT:
 		            case SDL_MOUSEBUTTONDOWN:
                         printf("Terminated at step %i.\n",life);
 			            quit = true;
                         Step=life;
-			            break;
+			            return;
 		        }
 	        }
             printf("Step: %d\n",life);
@@ -408,7 +442,7 @@ void ShowGen(){
 }
 
 void PrintMap(){
-    //print the initial game
+    //print the initial game map
     int i,j;
     for (i=0;i<Row;i++){
         for (j=0;j<Column;j++){
@@ -426,7 +460,7 @@ int WriteResult(FILE *game){
         game=fopen("Game.txt","wb");
     }
     //write in the result
-    fprintf(game,"%i,%i,%i\n\n",Row,Column,Step);
+    fprintf(game,"%i,%i,%i,%i\n\n",Row,Column,Step,Delay);
     int i,j;
     for (i=0;i<Row;i++){
         for (j=0;j<Column;j++){

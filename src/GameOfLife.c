@@ -341,39 +341,68 @@ void NextGen(int **map){
 
 //the function to print every step of the game
 void ShowGen(){
-    //play the game
+    //display the game result
     if (Step!=0){
-        int move;
-        for (move=0;move<Step;move++){
-            printf("Step: %d\n",move+1);
-            NextGen(NextGeneration);
-            printf("\n-----------------------------\n\n");
-            show(Game);
+        int move=0;
+        bool quit=false;
+        while(!quit){
+            while(move<Step){
+                while(SDL_PollEvent(&e) != 0){
+                    //player can choose to termiante the game by hand
+                    switch (e.type) {
+                        //press any key to terminate the programme
+		            case SDL_KEYDOWN:
+                        printf("Terminated at step %i.\n",move);
+			            quit = true;
+                        Step=move;
+			            return;
+                    //use mouse to press exit button
+		            case SDL_QUIT:
+		            case SDL_MOUSEBUTTONDOWN:
+                        printf("Terminated at step %i.\n",move);
+			            quit = true;
+                        Step=move;
+			            return;
+		            }
+                }
+                printf("Step: %d\n",move+1);
+                move++;
+                NextGen(NextGeneration);
+                printf("\n----------------------------------------------------------\n\n");
+                show(Game);
+            }
+            //after specified steps, quit
+            quit=true;
         }
     }
     else{
         printf("Infinite steps! Termiante the game when you want.\n");
         int life=1;
+        //SDL event to control window
         bool quit = false;
         while (!quit) {
 	        while (SDL_PollEvent(&e) != 0) {
-                printf("Step: %d\n",life);
-                NextGen(NextGeneration);
-                life++;
-                printf("\n-----------------------------\n\n");
-                show(Game);
 		        switch (e.type) {
                     //press any key to terminate the programme
 		            case SDL_KEYDOWN:
+                        printf("Terminated at step %i.\n",life);
 			            quit = true;
+                        Step=life;
 			            break;
                     //use mouse to press exit button
 		            case SDL_QUIT:
 		            case SDL_MOUSEBUTTONDOWN:
+                        printf("Terminated at step %i.\n",life);
 			            quit = true;
+                        Step=life;
 			            break;
 		        }
 	        }
+            printf("Step: %d\n",life);
+            NextGen(NextGeneration);
+            life++;
+            printf("\n----------------------------------------------------------\n\n");
+            show(Game);
         }
     } 
 }

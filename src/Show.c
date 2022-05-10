@@ -10,7 +10,7 @@
 //function to create the window
 int InitWindow(){
     //initial SDL libraries 
-   if (SDL_Init(SDL_INIT_VIDEO) != 0) {
+   if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
 		printf("Unable to initialise SDL: %s\n", SDL_GetError());
 		SDL_Quit();
 	    return -1;
@@ -22,7 +22,7 @@ int InitWindow(){
 		SDL_WINDOWPOS_CENTERED,  //position of the window
 		600, //width of the window
 		600,  //height of the window
-		SDL_WINDOW_OPENGL //widow is visible
+		SDL_WINDOW_SHOWN //widow is visible
 	);
     //check the window is created or not
     if (window == NULL) {
@@ -32,11 +32,7 @@ int InitWindow(){
 	}
     //bind the surface and window together
     surface = SDL_GetWindowSurface(window);
-    return 0;
-}
-
-void show(int **Game){
-    //draw lines between rectangles
+	//draw lines between rectangles
     render=SDL_CreateRenderer(window,-1,SDL_RENDERER_PRESENTVSYNC);
     SDL_RenderClear(render);
     SDL_SetRenderDrawColor(render,255,0,0,255);
@@ -47,6 +43,11 @@ void show(int **Game){
         SDL_RenderDrawLine(render,i,0,i,0);
     }
     SDL_RenderPresent(render);
+	SDL_ShowWindow(window);
+    return 0;
+}
+
+void show(int **Game){
     int x,y;
     for (y = 0; y < Row; y++) {
 		for (x = 0; x < Column; x++ ) {
@@ -69,7 +70,7 @@ void show(int **Game){
 			);
 		}
 	}
-    SDL_UpdateWindowSurface(window);
-	SDL_Delay(1000);
+	SDL_UpdateWindowSurface(window);
+    SDL_Delay(300);
 }
 

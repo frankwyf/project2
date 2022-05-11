@@ -63,6 +63,7 @@ int delay(){
     }
     else{
         printf("The Game of Life will evolute at %i millseconds.\n",Delay);
+        printf("\n----------------------------------------------------------\n\n");
         return Delay;
     }
 }
@@ -359,7 +360,8 @@ void NextGen(int **map){
         for (y=0;y<Column;y++){
             //put the new generation into the map
             map[x][y]=Evolution(Game,x,y);
-            printf("%d ",map[x][y]);
+            if(map[x][y]==1){printf("#");}
+            else{printf(" ");}
         }
         printf("\n");
     }
@@ -378,35 +380,12 @@ void ShowGen(){
     //display the game result
     if (Step!=0){
         int move=0;
-        bool quit=false;
-        while(!quit){
-            while(move<Step){
-                while(SDL_PollEvent(&e) != 0){
-                    //player can choose to termiante the game by hand
-                    switch (e.type) {
-                        //press any key to terminate the programme
-		            case SDL_KEYDOWN:
-                        printf("Terminated at step %i.\n",move);
-			            quit = true;
-                        Step=move;
-			            return;
-                    //use mouse to press exit button
-		            case SDL_QUIT:
-		            case SDL_MOUSEBUTTONDOWN:
-                        printf("Terminated at step %i.\n",move);
-			            quit = true;
-                        Step=move;
-			            return;
-		            }
-                }
-                printf("Step: %d\n",move+1);
-                move++;
-                NextGen(NextGeneration);
-                printf("\n----------------------------------------------------------\n\n");
-                show(Game);
-            }
-            //after specified steps, quit
-            quit=true;
+        while(move<Step){
+            printf("Step: %d\n",move+1);
+            move++;
+            NextGen(NextGeneration);
+            printf("\n----------------------------------------------------------\n\n");
+            show(Game);
         }
     }
     else{
@@ -446,7 +425,9 @@ void PrintMap(){
     int i,j;
     for (i=0;i<Row;i++){
         for (j=0;j<Column;j++){
-            printf("%d ",Game[i][j]);
+            if (Game[i][j]==1){printf("#");}
+            else{printf(" ");}
+            
         }
         printf("\n");
     }

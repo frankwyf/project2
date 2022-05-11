@@ -32,18 +32,19 @@ int InitWindow(){
 	}
     //bind the surface and window together
     surface = SDL_GetWindowSurface(window);
-	//draw lines between rectangles
-    render=SDL_CreateRenderer(window,-1,SDL_RENDERER_PRESENTVSYNC);
-    SDL_RenderClear(render);
-    SDL_SetRenderDrawColor(render,255,0,0,255);
-    int i;
-    for (i=0;i<600;i+=600/Row){
-        //draw horizontal line first, the vertical lines
-        SDL_RenderDrawLine(render,0,i,0,i);
-        SDL_RenderDrawLine(render,i,0,i,0);
-    }
-    SDL_RenderPresent(render);
-	SDL_ShowWindow(window);
+	//set the background for the window
+	SDL_Rect background = {
+		.x=0,
+		.y=0,
+		.w=600,
+		.h=600,
+	};
+	SDL_FillRect(
+		surface,
+		&background,
+		SDL_MapRGB(surface->format, 123, 123, 122)
+	);
+	SDL_UpdateWindowSurface(window);
     return 0;
 }
 
@@ -57,10 +58,10 @@ void show(int **Game){
 			int rgb = (state>0) ? 0xff : 0x00;
             //fill the window with filled rectangles
 			SDL_Rect square = {
-				.x = x * (600/Column),
-				.y = y * (600/Row),
-				.w = 600/Column,
-				.h = 600/Row,
+				.x = x * (600/Column)+0.1,
+				.y = y * (600/Row)+0.1,
+				.w = 600/Column-0.1,
+				.h = 600/Row-0.1,
 			};
             //fill the window with filled blocks
 			SDL_FillRect(

@@ -24,12 +24,19 @@ int main(int argc, char **argv){
             while (map()==1){
                 map();
             }
-            printf("Initialzing new game with size: %i X %i...\nStep 0:\n",Row,Column);
+            printf("Initialzing new game with size: %i X %i...\n",Row,Column);
             initialGame();
+            while (delay()==-1){
+                delay();
+            }
+            while (steps()==-1){
+                steps();
+            }
         }
         else{
+            printf("\n----------------------------------------------------------\n\n");
             //ask the user whether to change the size of the game or not
-            printf("Current game is %i X %i and evolve at speed %i\nDo you want to change (enter 'yes' or 'y' if you do)?",Row,Column,Delay);
+            printf("Current game is %i X %i and evolve at speed %i milliseconds.\nDo you want to change (enter 'yes' or 'y' if you do)?",Row,Column,Delay);
             char Option=getchar();
             //delete redundant keybord input stream
             fflush(stdin); 
@@ -42,7 +49,7 @@ int main(int argc, char **argv){
                     delay();
                 }
                 //create the initial map
-                printf("Initialzing new game with size: %i X %i...\n",Row,Column);
+                printf("Initialzing new game with size: %i X %i...\n\n",Row,Column);
                 initialGame();
             }
             else{
@@ -90,7 +97,7 @@ int main(int argc, char **argv){
                 while (map()==1){
                     map();
                 }
-                printf("Initialzing new game with size: %i X %i...\nStep 0:\n",Row,Column);
+                printf("Initialzing new game with size: %i X %i...\n",Row,Column);
                 initialGame();
             }
         }
@@ -120,7 +127,6 @@ int main(int argc, char **argv){
     else{
         printf("Game saved at: %d/%d/%d %d:%d:%d\n",lt->tm_year+1900, lt->tm_mon+1, lt->tm_mday, lt->tm_hour, lt->tm_min, lt->tm_sec);
     }
-    SDL_DestroyRenderer(render);
     SDL_DestroyWindow(window);
 	SDL_Quit();   
     return 0;

@@ -6,7 +6,7 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon May 09 10:13:00 2022
+# Make data base, printed on Thu May 12 09:59:44 2022
 
 # Variables
 
@@ -27,9 +27,10 @@ USERPROFILE = C:\Users\frank
 # environment
 C_INCLUDE_PATH = D:\SDL2-2.0.20\x86_64-w64-mingw32\include
 # environment
-LOCALAPPDATA = C:\Users\frank\AppData\Local
+LOCALAPPDATA  
+= C:\Users\frank\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-e4ecdd65-9d4c-4cba-8eb1-d381a1eb6276-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-9111ef25-b81e-4221-aadb-290e0ed907a3-sock
 # makefile (from 'Makefile', line 47)
 TARGET_BASE2 = test2
 # environment
@@ -45,7 +46,7 @@ MAKE_COMMAND := make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_56548_DHQOQJOQHLYTEDUQ
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_10988_HXEIAFSTQKOITZOZ
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -103,7 +104,7 @@ VSCODE_VERBOSE_LOGGING = true
 # makefile (from 'Makefile', line 28)
 UNITY_ROOT = ../..
 # environment
-VSCODE_PID = 56548
+VSCODE_PID = 10988
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -111,7 +112,7 @@ VSCODE_PID = 56548
 # automatic
 <D = $(patsubst %/,%,$(patsubst %\,%,$(dir $<)))
 # environment
-VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"a78078f10f99ab7adc9063c14c25e7ae.zh-cn","_translationsConfigFile":"C:\\Users\\frank\\AppData\\Roaming\\Code\\clp\\a78078f10f99ab7adc9063c14c25e7ae.zh-cn\\tcf.json","_cacheRoot":"C:\\Users\\frank\\AppData\\Roaming\\Code\\clp\\a78078f10f99ab7adc9063c14c25e7ae.zh-cn","_resolvedLanguagePackCoreLocation":"C:\\Users\\frank\\AppData\\Roaming\\Code\\clp\\a78078f10f99ab7adc9063c14c25e7ae.zh-cn\\57fd6d0195bb9b9d1b49f6da5db789060795de47","_corruptedFile":"C:\\Users\\frank\\AppData\\Roaming\\Code\\clp\\a78078f10f99ab7adc9063c14c25e7ae.zh-cn\\corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"42e84e0914b17800d483f69e299e1b00.zh-cn","_translationsConfigFile":"C:\\Users\\frank\\AppData\\Roaming\\Code\\clp\\42e84e0914b17800d483f69e299e1b00.zh-cn\\tcf.json","_cacheRoot":"C:\\Users\\frank\\AppData\\Roaming\\Code\\clp\\42e84e0914b17800d483f69e299e1b00.zh-cn","_resolvedLanguagePackCoreLocation":"C:\\Users\\frank\\AppData\\Roaming\\Code\\clp\\42e84e0914b17800d483f69e299e1b00.zh-cn\\57fd6d0195bb9b9d1b49f6da5db789060795de47","_corruptedFile":"C:\\Users\\frank\\AppData\\Roaming\\Code\\clp\\42e84e0914b17800d483f69e299e1b00.zh-cn\\corrupted.info","_languagePackSupport":true}
 # environment
 ONEDRIVECONSUMER = C:\Users\frank\OneDrive
 # default
@@ -139,7 +140,7 @@ MKDIR = mkdir -p
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = C:\Program Files\Common Files\Oracle\Java\javapath;D:\bin\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\Git\cmd;C:\cygwin64\bin;C:\Users\frank\.jdks\openjdk-17.0.2;D:\SDL2\x86_64-w64-mingw32\bin;D:\SDL2\x86_64-w64-mingw32\include;D:\SDL2\x86_64-w64-mingw32\lib;D:\mingw64\bin;D:\SDL2;D:\Scripts\;D:\;C:\Users\frank\AppData\Local\Microsoft\WindowsApps;D:\Python\PyCharm 2020.3\bin;C:\Users\frank\.dotnet\tools;C:\Users\frank\AppData\Local\atom\bin;D:\Microsoft VS Code\bin;D:\mingw64\bin;D:\c compiler\mingw64\bin;D:\GNUmake\make-4.3\GccRel;C:\Users\frank\AppData\Local\Microsoft\WindowsApps;D:\IntelliJ IDEA 2021.3.2\bin;;C:\Users\frank\.jdks\openjdk-17.0.2;D:\SDL2\x86_64-w64-mingw32\bin;
+PATH = C:\Program Files\Common Files\Oracle\Java\javapath;D:\bin\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\Git\cmd;C:\cygwin64\bin;C:\Users\frank\.jdks\openjdk-17.0.2;D:\SDL2\x86_64-w64-mingw32\bin;D:\SDL2\x86_64-w64-mingw32\include;D:\SDL2\x86_64-w64-mingw32\lib;D:\mingw64\bin;D:\SDL2;D:\SDL_draw;D:\Scripts\;D:\;C:\Users\frank\AppData\Local\Microsoft\WindowsApps;D:\Python\PyCharm 2020.3\bin;C:\Users\frank\.dotnet\tools;C:\Users\frank\AppData\Local\atom\bin;D:\Microsoft VS Code\bin;D:\mingw64\bin;D:\c compiler\mingw64\bin;D:\GNUmake\make-4.3\GccRel;C:\Users\frank\AppData\Local\Microsoft\WindowsApps;D:\IntelliJ IDEA 2021.3.2\bin;;C:\Users\frank\.jdks\openjdk-17.0.2;D:\SDL2\x86_64-w64-mingw32\bin;
 # makefile (from 'Makefile', line 53)
 SYMBOLS = 
 # environment
@@ -391,6 +392,6 @@ test/test_runners/TestProductionCode_Runner.c: test/TestProductionCode.c
 # strcache performance: lookups = 42 / hit rate = 52%
 # hash-table stats:
 # Load=20/8192=0%, Rehash=0, Collisions=0/42=0%
-# Finished Make data base on Mon May 09 10:13:00 2022
+# Finished Make data base on Thu May 12 09:59:44 2022
 
  

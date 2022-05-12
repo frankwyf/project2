@@ -10,6 +10,32 @@
 #include "NextGenre.h"
 #include "GameWindow.h"
 
+
+
+//ask the user whether the game should be re-eastablished or not
+void Ask(){
+    //ask the user whether to change the size of the game or not
+    printf("Current game is %i X %i and evolve at speed %i milliseconds.\nDo you want to change (enter 'yes' or 'y' if you do)?",Row,Column,Delay);
+    char Option=getchar();
+    //delete redundant keybord input stream
+    fflush(stdin); 
+    if (Option=='y'){
+        //wait until user input is valid
+        while (map()==1){
+            map();
+        }
+        while (delay()==-1){
+            delay();
+        }
+        //create the initial map
+        printf("Initialzing new game with size: %i X %i...\n\n",Row,Column);
+        initialGame();
+    }
+    else{
+        printf("\nGame continue with size %i X %i.\n",Row,Column);
+    }
+}
+
 //ask whether the user want to decide the steps or not
 int steps(){
     printf("Enter a number if you want to decide how many steps the game display (0 for infinite): ");
@@ -420,8 +446,8 @@ void ShowGen(){
     } 
 }
 
+//print the initial game map
 void PrintMap(){
-    //print the initial game map
     int i,j;
     for (i=0;i<Row;i++){
         for (j=0;j<Column;j++){
@@ -431,6 +457,26 @@ void PrintMap(){
         }
         printf("\n");
     }
+}
+
+//the function to ask palyer whether to replay the game or not
+void replay(){
+    printf("Do you wish to play back the game (y/n)?");
+    char back=getchar();
+    //delete redundant keybord input stream
+    fflush(stdin);
+    if (back=='y'){
+        Readfile(game);
+        printf("Step 0:\n");
+        PrintMap();
+        //init SDL window
+        InitWindow();
+        //show first stage
+        show(Game);
+        //show every genertaion of the game
+        ShowGen();
+    }
+    else{return;}
 }
 
 //write the result back
@@ -455,11 +501,11 @@ int WriteResult(FILE *game){
     }
     fclose(game);
     if (ferror(game)){
-        printf("Faild to stroe last game!\nData lost.\n");
+        printf("Storing data....\nFaild to stroe last game!\nData lost.\n");
         return -1;
     }
     else{
-        printf("Data saved successfully! \nGood Bye!\n");
+        printf("Storing data....\nData saved successfully! \nGood Bye!\n");
         return 0;
     }
 }

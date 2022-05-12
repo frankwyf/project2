@@ -35,26 +35,7 @@ int main(int argc, char **argv){
         }
         else{
             printf("\n----------------------------------------------------------\n\n");
-            //ask the user whether to change the size of the game or not
-            printf("Current game is %i X %i and evolve at speed %i milliseconds.\nDo you want to change (enter 'yes' or 'y' if you do)?",Row,Column,Delay);
-            char Option=getchar();
-            //delete redundant keybord input stream
-            fflush(stdin); 
-            if (Option=='y'){
-                //wait until user input is valid
-                while (map()==1){
-                    map();
-                }
-                while (delay()==-1){
-                    delay();
-                }
-                //create the initial map
-                printf("Initialzing new game with size: %i X %i...\n\n",Row,Column);
-                initialGame();
-            }
-            else{
-                printf("\nGame continue with size %i X %i.\n",Row,Column);
-            }
+            Ask();
             //ask for steps and
             printf("Last game stopped at step %i.\n",Step);
             while (steps()==-1){
@@ -68,7 +49,7 @@ int main(int argc, char **argv){
         //show first stage
         show(Game);
         //show every genertaion of the game
-        ShowGen();  
+        ShowGen(); 
     }
     //configure size of game by commnad line argument 
     else{
@@ -120,6 +101,8 @@ int main(int argc, char **argv){
         //show every genertaion of the game
         ShowGen();
     }
+    //offer replay mode for finite steps
+    replay(); 
     //write the result 
     if (WriteResult(game)==-1){
        printf("Exit without saving at: %d/%d/%d %d:%d:%d\n",lt->tm_year+1900, lt->tm_mon+1, lt->tm_mday, lt->tm_hour, lt->tm_min, lt->tm_sec);

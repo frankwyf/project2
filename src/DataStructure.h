@@ -38,4 +38,8 @@ int WriteResult(FILE *game);
 void PrintMap();
 //ask the player how fast it want the game to display
 int delay();
+//the function to ask the user whether the game should be re-eastablished or not
+void Ask();
+//the function to ask palyer whether to replay the game or not
+void replay(); 
 #endif

@@ -15,7 +15,7 @@ int main(int argc, char **argv){
     struct tm * lt;
     time (&t);//get Unix time
     lt = localtime (&t);//turn into time struct
-    printf("%d/%d/%d %d:%d:%d\nWelcome to Conway's Game of Life!\n",lt->tm_year+1900, lt->tm_mon+1, lt->tm_mday, lt->tm_hour, lt->tm_min, lt->tm_sec);
+    printf("\n%d/%d/%d %d:%d:%d   Welcome to Conway's Game of Life!\n",lt->tm_year+1900, lt->tm_mon+1, lt->tm_mday, lt->tm_hour, lt->tm_min, lt->tm_sec);
     //configure the size of the game by user input
     if (argc<3){
         //read the initial file in
@@ -101,16 +101,21 @@ int main(int argc, char **argv){
         //show every genertaion of the game
         ShowGen();
     }
+    //destory window after first shown the game
+    SDL_DestroyWindow(window);
+	SDL_Quit();
     //offer replay mode for finite steps
-    replay(); 
+    replay();
     //write the result 
     if (WriteResult(game)==-1){
-       printf("Exit without saving at: %d/%d/%d %d:%d:%d\n",lt->tm_year+1900, lt->tm_mon+1, lt->tm_mday, lt->tm_hour, lt->tm_min, lt->tm_sec);
+        time (&t);//get Unix time
+        lt = localtime (&t);//turn into time struct
+        printf("Exit without saving at: %d/%d/%d %d:%d:%d\n",lt->tm_year+1900, lt->tm_mon+1, lt->tm_mday, lt->tm_hour, lt->tm_min, lt->tm_sec);
     }
     else{
+        time (&t);//get Unix time
+        lt = localtime (&t);//turn into time struct
         printf("Game saved at: %d/%d/%d %d:%d:%d\n",lt->tm_year+1900, lt->tm_mon+1, lt->tm_mday, lt->tm_hour, lt->tm_min, lt->tm_sec);
-    }
-    SDL_DestroyWindow(window);
-	SDL_Quit();   
+    } 
     return 0;
 }

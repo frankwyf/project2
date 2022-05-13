@@ -10,7 +10,7 @@ SRC= main.c GameOfLife.c Show.c
 
 CC =     gcc
 CFLAGS = -Wall -O
-LIBS =   -lSDL2 -lSDL2_image 
+LIBS =   -lSDL2 -lSDL2_ttf 
 
 SDLDIR = D:\SDL2
 # compile to  object code

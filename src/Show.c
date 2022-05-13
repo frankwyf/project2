@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include <time.h>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
 #include "GameWindow.h"
 #include "DataStructure.h"
 

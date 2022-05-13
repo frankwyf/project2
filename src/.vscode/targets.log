@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu May 12 09:59:44 2022
+# Make data base, printed on Fri May 13 14:24:38 2022
 
 # Variables
 
@@ -31,13 +31,13 @@ C_INCLUDE_PATH = D:\SDL2-2.0.20\x86_64-w64-mingw32\include
 # environment
 LOCALAPPDATA = C:\Users\frank\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-c9982849-5108-4727-b3c7-d1ee2b645e5f-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-e3c004ff-cb2c-42ab-b4c6-b8259895e3ff-sock
 # environment
 VSCODE_CWD = D:\Microsoft VS Code
 # environment
 SYSTEMROOT = C:\WINDOWS
 # makefile (from 'Makefile', line 13)
-LIBS = -lSDL2 -lSDL2_image 
+LIBS = -lSDL2 -lSDL2_ttf 
 # environment
 PROCESSOR_LEVEL = 6
 # environment
@@ -47,7 +47,7 @@ MAKE_COMMAND := make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_10988_HXEIAFSTQKOITZOZ
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_24676_QYJPGPDSRYMZKJHJ
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -63,7 +63,7 @@ VSCODE_LOG_STACK = false
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = C:\Users\frank\AppData\Roaming\Code\CachedData\57fd6d0195bb9b9d1b49f6da5db789060795de47
+VSCODE_CODE_CACHE_PATH = C:\Users\frank\AppData\Roaming\Code\CachedData\da15b6fd3ef856477bf6f4fb29ba1b7af717770d
 # environment
 LANG = C
 # default
@@ -101,7 +101,7 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 10988
+VSCODE_PID = 24676
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -109,7 +109,7 @@ VSCODE_PID = 10988
 # automatic
 <D = $(patsubst %/,%,$(patsubst %\,%,$(dir $<)))
 # environment
-VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"42e84e0914b17800d483f69e299e1b00.zh-cn","_translationsConfigFile":"C:\\Users\\frank\\AppData\\Roaming\\Code\\clp\\42e84e0914b17800d483f69e299e1b00.zh-cn\\tcf.json","_cacheRoot":"C:\\Users\\frank\\AppData\\Roaming\\Code\\clp\\42e84e0914b17800d483f69e299e1b00.zh-cn","_resolvedLanguagePackCoreLocation":"C:\\Users\\frank\\AppData\\Roaming\\Code\\clp\\42e84e0914b17800d483f69e299e1b00.zh-cn\\57fd6d0195bb9b9d1b49f6da5db789060795de47","_corruptedFile":"C:\\Users\\frank\\AppData\\Roaming\\Code\\clp\\42e84e0914b17800d483f69e299e1b00.zh-cn\\corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"42e84e0914b17800d483f69e299e1b00.zh-cn","_translationsConfigFile":"C:\\Users\\frank\\AppData\\Roaming\\Code\\clp\\42e84e0914b17800d483f69e299e1b00.zh-cn\\tcf.json","_cacheRoot":"C:\\Users\\frank\\AppData\\Roaming\\Code\\clp\\42e84e0914b17800d483f69e299e1b00.zh-cn","_resolvedLanguagePackCoreLocation":"C:\\Users\\frank\\AppData\\Roaming\\Code\\clp\\42e84e0914b17800d483f69e299e1b00.zh-cn\\da15b6fd3ef856477bf6f4fb29ba1b7af717770d","_corruptedFile":"C:\\Users\\frank\\AppData\\Roaming\\Code\\clp\\42e84e0914b17800d483f69e299e1b00.zh-cn\\corrupted.info","_languagePackSupport":true}
 # environment
 ONEDRIVECONSUMER = C:\Users\frank\OneDrive
 # default
@@ -209,7 +209,7 @@ ELECTRON_RUN_AS_NODE = 1
 # environment
 TEMP = C:\Users\frank\AppData\Local\Temp
 # environment
-VSCODE_IPC_HOOK = \\.\pipe\dd0a82a4bb4aadd2aeae6af91e3e2630-1.67.0-main-sock
+VSCODE_IPC_HOOK = \\.\pipe\dd0a82a4bb4aadd2aeae6af91e3e2630-1.67.1-main-sock
 # default
 .RECIPEPREFIX := 
 # automatic
@@ -237,7 +237,7 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 126 Stepping 5, GenuineIntel
 
 # Directories
 
-# . (key d:/programming_project/CWK2/code/src, mtime 1652248155): 13 files, no impossibilities.
+# . (key d:/programming_project/CWK2/code/src, mtime 1652423063): 13 files, no impossibilities.
 
 # 13 files, no impossibilities in 1 directories.
 
@@ -269,7 +269,7 @@ Shwo.o: Show.c DataStructure.h GameWindow.h
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-08 13:17:14
+#  Last modified 2022-05-13 14:24:34
 #  File has been updated.
 #  Successfully updated.
 
@@ -365,6 +365,6 @@ GameOfLife.o: GameOfLife.c DataStructure.h NextGenre.h Check.h GameWindow.h
 # strcache performance: lookups = 47 / hit rate = 51%
 # hash-table stats:
 # Load=23/8192=0%, Rehash=0, Collisions=0/47=0%
-# Finished Make data base on Thu May 12 09:59:44 2022
+# Finished Make data base on Fri May 13 14:24:38 2022
 
  

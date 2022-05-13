@@ -14,7 +14,8 @@
                 "-LD:/SDL2/x86_64-w64-mingw32/lib",
                 "-lmingw32",
                 "-lSDL2main",
-                "-lSDL2"
+                "-lSDL2",
+                "-lSDL2_ttf"
             ],
             "options": {
                 "cwd": "D:\\mingw64\\bin"

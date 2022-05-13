@@ -3,6 +3,7 @@
     "files.associations": {
         "stdlib.h": "c",
         "gamewindow.h": "c",
-        "nextgenre.h": "c"
+        "nextgenre.h": "c",
+        "sdl.h": "c"
     }
 }

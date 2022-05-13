@@ -273,6 +273,7 @@ void initialGame(){
             Game[i][j]=rand()%2;
         }
     }
+    WriteResult(game);
 }
 /*
   The follwing part will be 8 functions that check the 8 nighbours of a target cell
@@ -383,13 +384,14 @@ void NextGen(int **map){
     map=(int **)malloc(sizeof(*Game)*Row);
     for (x=0;x<Row;x++){
         map[x]=(int *)malloc(sizeof(**Game)*Column);
+        printf(" |");
         for (y=0;y<Column;y++){
             //put the new generation into the map
             map[x][y]=Evolution(Game,x,y);
             if(map[x][y]==1){printf("#");}
             else{printf(" ");}
         }
-        printf("\n");
+        printf(" |\n");
     }
     //put the cells of the next generation back to Game to keep the game going 
     for (x=0;x<Row;x++){
@@ -406,12 +408,31 @@ void ShowGen(){
     //display the game result
     if (Step!=0){
         int move=0;
-        while(move<Step){
-            printf("Step: %d\n",move+1);
-            move++;
-            NextGen(NextGeneration);
-            printf("\n----------------------------------------------------------\n\n");
-            show(Game);
+        //SDL event to control window
+        bool quit = false;
+        while (!quit) {
+            while (SDL_PollEvent(&e) != 0) {
+		        switch (e.type) {
+                    //use mouse to press exit button
+		            case SDL_QUIT:
+		            case SDL_MOUSEBUTTONDOWN:
+                        printf("Terminated at step %i.\n",move);
+			            quit = true;
+                        Step=move;
+			            return;
+		        }
+	        }
+            if(move<Step){
+                printf("Step: %d\n",move+1);
+                move++;
+                NextGen(NextGeneration);
+                printf("\n--------------------------------------------------------------------------------------------------------------------\n\n");
+                show(Game);
+            }
+            else{
+                printf("Terminated at step %i.\n",move);
+                quit=true;
+            }
         }
     }
     else{
@@ -440,7 +461,7 @@ void ShowGen(){
             printf("Step: %d\n",life);
             NextGen(NextGeneration);
             life++;
-            printf("\n----------------------------------------------------------\n\n");
+            printf("\n--------------------------------------------------------------------------------------------------------------------\n\n");
             show(Game);
         }
     } 
@@ -450,13 +471,15 @@ void ShowGen(){
 void PrintMap(){
     int i,j;
     for (i=0;i<Row;i++){
+        printf("| ");
         for (j=0;j<Column;j++){
             if (Game[i][j]==1){printf("#");}
             else{printf(" ");}
             
         }
-        printf("\n");
+        printf(" |\n");
     }
+    printf("\n--------------------------------------------------------------------------------------------------------------------\n\n");
 }
 
 //the function to ask palyer whether to replay the game or not
@@ -475,6 +498,10 @@ void replay(){
         show(Game);
         //show every genertaion of the game
         ShowGen();
+        //destory the window and quit after replay
+        SDL_DestroyWindow(window);
+	    SDL_Quit();
+        printf("Game replay is over.\n"); 
     }
     else{return;}
 }
@@ -505,7 +532,7 @@ int WriteResult(FILE *game){
         return -1;
     }
     else{
-        printf("Storing data....\nData saved successfully! \nGood Bye!\n");
+        printf("Storing data....\nData saved successfully!\nGood Bye!\n");
         return 0;
     }
 }

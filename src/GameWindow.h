@@ -13,10 +13,15 @@ SDL_Surface *surface;
 SDL_Event e;
 //SDL render
 SDL_Renderer *render;
+//the number of cells that are alive
+int alive;
 
 //the function to initialize a window for display
 int InitWindow();
 //the function to show next generation in SDL mode
 void show(int **Game);
-
+//the function to intialize a window for click
+void click();
+//the function to display message on the window
+void title(int round);
 #endif

@@ -101,7 +101,7 @@ int map(){
     char *column=(char *)malloc(sizeof(int) + sizeof(char));
     //get user input and check if it is valid or not
     printf("Enter Rows of the Game (up to 1024):");
-    fgets(row,5,stdin);
+    fgets(row,6,stdin);
     row[strlen(row)-1]='\0';//get rid of the '\n' at the last of the input 
 	int j;
 	for (j=0;j<strlen(row);j++){
@@ -122,7 +122,7 @@ int map(){
 		return 1;
     }
     printf("Enter columns of the Game (up to 1024):");
-    fgets(column,42,stdin);
+    fgets(column,6,stdin);
     column[strlen(column)-1]='\0';//get rid of the '\n' at the last of the input
 	for (j=0;j<strlen(column);j++){
 		if (!isdigit(column[j])){
@@ -273,7 +273,17 @@ void initialGame(){
             Game[i][j]=rand()%2;
         }
     }
-    WriteResult(game);
+    printf("Would you like to re-establish the game? (y/n)");
+    char reset=getchar();
+    //delete redundant keybord input stream
+    fflush(stdin); 
+    if (reset=='y'){
+        click();
+    }
+    else{
+        printf("\nContinue with randomly generated game!\n");
+        WriteResult(game);
+    }
 }
 /*
   The follwing part will be 8 functions that check the 8 nighbours of a target cell
@@ -413,10 +423,38 @@ void ShowGen(){
         while (!quit) {
             while (SDL_PollEvent(&e) != 0) {
 		        switch (e.type) {
+                    //press any key to terminate the programme
+		            case SDL_KEYDOWN:
+                        switch (e.key.keysym.sym){
+                        case SDLK_RETURN:
+                            //replay the game
+                            printf("Rolling Back...\n");
+                            Readfile(game);
+                            show(Game);
+                            ShowGen();
+                            break;
+                        case SDLK_ESCAPE:
+                            printf("Manually terminated at step %i.\n",move);
+			                quit = true;
+                            Step=move;
+			                return;
+                        case SDLK_BACKSPACE:
+                            //reconfigure the game
+                            printf("Preparing to re-esatblish the game...\n");
+                            SDL_DestroyWindow(window);
+	                        SDL_Quit();
+                            click();
+                            //reopen the window, as a new game do
+                            InitWindow();
+                            show(Game);
+                            move=1;
+                            break;
+                        }
+                    break;
                     //use mouse to press exit button
 		            case SDL_QUIT:
 		            case SDL_MOUSEBUTTONDOWN:
-                        printf("Terminated at step %i.\n",move);
+                        printf("Manually terminated at step %i.\n",move);
 			            quit = true;
                         Step=move;
 			            return;
@@ -445,14 +483,38 @@ void ShowGen(){
 		        switch (e.type) {
                     //press any key to terminate the programme
 		            case SDL_KEYDOWN:
-                        printf("Terminated at step %i.\n",life);
-			            quit = true;
-                        Step=life;
-			            return;
+                        switch (e.key.keysym.sym){
+                        case SDLK_RETURN:
+                        //replay the game
+                            Readfile(game);
+                            //update the value of step
+                            Step=life-1;
+                            show(Game);
+                            ShowGen();
+                            printf("==========================\nGame replay is over.Continue eveloving...\n");
+                            break;
+                        case SDLK_ESCAPE:
+                            printf("Manually terminated at step %i.\n",life-1);
+			                quit = true;
+                            Step=life;
+			                return;
+                        case SDLK_BACKSPACE:
+                        //reconfigure the game
+                            printf("Preparing to re-esatblish the game...\n");
+                            SDL_DestroyWindow(window);
+	                        SDL_Quit();
+                            click();
+                            //reopen the window, as a new game do
+                            InitWindow();
+                            show(Game);
+                            life=1;
+                            break;
+                        }
+                    break;
                     //use mouse to press exit button
 		            case SDL_QUIT:
 		            case SDL_MOUSEBUTTONDOWN:
-                        printf("Terminated at step %i.\n",life);
+                        printf("Terminated at step %i.\n",life-1);
 			            quit = true;
                         Step=life;
 			            return;
@@ -528,11 +590,11 @@ int WriteResult(FILE *game){
     }
     fclose(game);
     if (ferror(game)){
-        printf("Storing data....\nFaild to stroe last game!\nData lost.\n");
+        printf("Storing data....\nFaild to stroe last game!\n");
         return -1;
     }
     else{
-        printf("Storing data....\nData saved successfully!\nGood Bye!\n");
+        printf("Storing data....\nData saved successfully!\n");
         return 0;
     }
 }

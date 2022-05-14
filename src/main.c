@@ -53,7 +53,7 @@ int main(int argc, char **argv){
     }
     //configure size of game by commnad line argument 
     else{
-        printf("Size of the game configured in commad line!\n");
+        printf("Intila state requires clicking on the map!\n");
         int j;
 	    for (j=0;j<strlen(argv[1]);j++){
 		    if (!isdigit(argv[1][j])){
@@ -99,6 +99,7 @@ int main(int argc, char **argv){
         //show first stage
         show(Game);
         //show every genertaion of the game
+        printf("Press Esc or click to terminate.\nPress enter to stop for more options.\n");
         ShowGen();
     }
     //destory window after first shown the game

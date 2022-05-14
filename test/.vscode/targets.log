@@ -6,12 +6,10 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri May 13 09:01:22 2022
+# Make data base, printed on Sat May 14 09:46:08 2022
 
 # Variables
 
-# environment
-FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # makefile (from 'Makefile', line 23)
 C_COMPILER = gcc
 # environment
@@ -29,7 +27,8 @@ C_INCLUDE_PATH = D:\SDL2-2.0.20\x86_64-w64-mingw32\include
 # environment
 LOCALAPPDATA = C:\Users\frank\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-f6cb817d-c12b-49c2-a065-fee1b75306bb-sock
+VSCODE_IPC_HOOK_EXTH 
+OST = \\.\pipe\vscode-ipc-996db286-fb8d-48e8-84e0-4aca66ca1d9e-sock
 # makefile (from 'Makefile', line 47)
 TARGET_BASE2 = test2
 # environment
@@ -45,9 +44,7 @@ MAKE_COMMAND := make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_24676_QYJPGPDSRYMZKJHJ
-# environment
-FPS_BROWSER_USER_PROFILE_STRING = Default
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_2396_WBNPZUTLSLKJNCJZ
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -103,7 +100,7 @@ VSCODE_VERBOSE_LOGGING = true
 # makefile (from 'Makefile', line 28)
 UNITY_ROOT = ../..
 # environment
-VSCODE_PID = 24676
+VSCODE_PID = 2396
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -139,7 +136,7 @@ MKDIR = mkdir -p
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = C:\Program Files\Common Files\Oracle\Java\javapath;D:\bin\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\Git\cmd;C:\cygwin64\bin;C:\Users\frank\.jdks\openjdk-17.0.2;D:\SDL2\x86_64-w64-mingw32\bin;D:\SDL2\x86_64-w64-mingw32\include;D:\SDL2\x86_64-w64-mingw32\lib;D:\mingw64\bin;D:\SDL2;D:\SDL_draw;D:\Scripts\;D:\;C:\Users\frank\AppData\Local\Microsoft\WindowsApps;D:\Python\PyCharm 2020.3\bin;C:\Users\frank\.dotnet\tools;C:\Users\frank\AppData\Local\atom\bin;D:\Microsoft VS Code\bin;D:\mingw64\bin;D:\c compiler\mingw64\bin;D:\GNUmake\make-4.3\GccRel;C:\Users\frank\AppData\Local\Microsoft\WindowsApps;D:\IntelliJ IDEA 2021.3.2\bin;;C:\Users\frank\.jdks\openjdk-17.0.2;D:\SDL2\x86_64-w64-mingw32\bin;
+PATH = C:\Program Files\Common Files\Oracle\Java\javapath;D:\bin\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\Git\cmd;C:\cygwin64\bin;C:\Users\frank\.jdks\openjdk-17.0.2;D:\SDL2\x86_64-w64-mingw32\bin;D:\SDL2\x86_64-w64-mingw32\include;D:\SDL2\x86_64-w64-mingw32\lib;D:\mingw64\bin;D:\SDL2;D:\SDL2_ttf;D:\Scripts\;D:\;C:\Users\frank\AppData\Local\Microsoft\WindowsApps;D:\Python\PyCharm 2020.3\bin;C:\Users\frank\.dotnet\tools;C:\Users\frank\AppData\Local\atom\bin;D:\Microsoft VS Code\bin;D:\mingw64\bin;D:\c compiler\mingw64\bin;D:\GNUmake\make-4.3\GccRel;C:\Users\frank\AppData\Local\Microsoft\WindowsApps;D:\IntelliJ IDEA 2021.3.2\bin;;C:\Users\frank\.jdks\openjdk-17.0.2;D:\SDL2\x86_64-w64-mingw32\bin;
 # makefile (from 'Makefile', line 53)
 SYMBOLS = 
 # environment
@@ -241,7 +238,7 @@ PROCESSOR_REVISION = 7e05
 # environment
 PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 126 Stepping 5, GenuineIntel
 # variable set hash-table stats:
-# Load=115/1024=11%, Rehash=0, Collisions=13/192=7%
+# Load=113/1024=11%, Rehash=0, Collisions=12/190=6%
 
 # Pattern-specific Variable Values
 
@@ -391,6 +388,6 @@ test/test_runners/TestProductionCode_Runner.c: test/TestProductionCode.c
 # strcache performance: lookups = 42 / hit rate = 52%
 # hash-table stats:
 # Load=20/8192=0%, Rehash=0, Collisions=0/42=0%
-# Finished Make data base on Fri May 13 09:01:22 2022
+# Finished Make data base on Sat May 14 09:46:08 2022
 
  

@@ -11,10 +11,14 @@ SDL_Window *window;
 SDL_Surface *surface;
 //SDL event
 SDL_Event e;
-//SDL render
-SDL_Renderer *render;
 //the number of cells that are alive
 int alive;
+//SDL variables for the intro text window
+SDL_Window *text;
+SDL_Renderer *render;
+SDL_Surface *intro;
+SDL_Texture *introText;
+SDL_Event event;
 
 //the function to initialize a window for display
 int InitWindow();
@@ -23,5 +27,5 @@ void show(int **Game);
 //the function to intialize a window for click
 void click();
 //the function to display message on the window
-void title(int round);
+int title(int round);
 #endif

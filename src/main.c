@@ -11,6 +11,7 @@
 #undef main
 
 int main(int argc, char **argv){
+    title(-2);
     time_t t;
     struct tm * lt;
     time (&t);//get Unix time
@@ -42,14 +43,6 @@ int main(int argc, char **argv){
                 steps();
             }
         }
-        printf("Step 0:\n");
-        PrintMap();
-        //init SDL window
-        InitWindow();
-        //show first stage
-        show(Game);
-        //show every genertaion of the game
-        ShowGen(); 
     }
     //configure size of game by commnad line argument 
     else{
@@ -92,17 +85,20 @@ int main(int argc, char **argv){
         while (steps()==-1){
             steps();
         }
-        printf("Step 0:\n");
-        PrintMap();
-        //init SDL window
-        InitWindow();
-        //show first stage
-        show(Game);
-        //show every genertaion of the game
-        printf("Press Esc or click to terminate.\nPress enter to stop for more options.\n");
-        ShowGen();
     }
-    //destory window after first shown the game
+    printf("Step 0:\n");
+    PrintMap();
+    //give tips
+    title(-1);
+    //init SDL window
+    InitWindow();
+    move=0;
+    //show first stage
+    show(Game);
+    //show every genertaion of the game
+    ShowGen();
+    //destory windows
+    SDL_DestroyWindow(text);
     SDL_DestroyWindow(window);
 	SDL_Quit();
     //offer replay mode for finite steps

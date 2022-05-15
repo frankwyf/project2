@@ -8,10 +8,12 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat May 14 09:45:46 2022
+# Make data base, printed on Sun May 15 10:21:10 2022
 
 # Variables
 
+# environment
+FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # environment
 SYSTEMDRIVE = C:
 # environment
@@ -29,7 +31,7 @@ C_INCLUDE_PATH = D:\SDL2-2.0.20\x86_64-w64-mingw32\include
 # environment
 LOCALAPPDATA = C:\Users\frank\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-4f7325f5-5376-4092-ab42-a912c3f233a5-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-35473152-3909-4bc4-a51f-ff52ae709782-sock
 # environment
 VSCODE_CWD = D:\Microsoft VS Code
 # environment
@@ -45,7 +47,9 @@ MAKE_COMMAND := make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_2396_WBNPZUTLSLKJNCJZ
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_13688_WBSUHNQLBHLWEIMV
+# environment
+FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -97,7 +101,7 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 2396
+VSCODE_PID = 13688
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -225,7 +229,7 @@ CC = gcc
 # environment
 PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 126 Stepping 5, GenuineIntel
 # variable set hash-table stats:
-# Load=106/1024=10%, Rehash=0, Collisions=14/136=10%
+# Load=108/1024=11%, Rehash=0, Collisions=15/138=11%
 
 # Pattern-specific Variable Values
 
@@ -233,7 +237,7 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 126 Stepping 5, GenuineIntel
 
 # Directories
 
-# . (key d:/programming_project/CWK2/code/src, mtime 1652461373): 13 files, no impossibilities.
+# . (key d:/programming_project/CWK2/code/src, mtime 1652533992): 13 files, no impossibilities.
 
 # 13 files, no impossibilities in 1 directories.
 
@@ -361,6 +365,6 @@ GameOfLife.o: GameOfLife.c DataStructure.h NextGenre.h Check.h GameWindow.h
 # strcache performance: lookups = 47 / hit rate = 51%
 # hash-table stats:
 # Load=23/8192=0%, Rehash=0, Collisions=0/47=0%
-# Finished Make data base on Sat May 14 09:45:46 2022
+# Finished Make data base on Sun May 15 10:21:10 2022
 
  

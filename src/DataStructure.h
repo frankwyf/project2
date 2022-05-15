@@ -19,6 +19,8 @@ int Step;
 int Delay;
 //the file pointer to read and write from the file
 FILE *game;
+//keep track of the step game is running
+int move;
 
 /*
   The following part is denfinitions of funtions

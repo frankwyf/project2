@@ -7,6 +7,9 @@
 #include "GameWindow.h"
 #include "DataStructure.h"
 
+//structures to get time and display in SDL window
+time_t t;
+struct tm * lt;
 
 //function to create the window
 int InitWindow(){
@@ -77,7 +80,14 @@ void show(int **Game){
 		}
 	}
 	SDL_UpdateWindowSurface(window);
+	title(move);
     SDL_Delay(Delay);
+	TTF_Quit();
+	SDL_DestroyWindow(text); 
+	SDL_DestroyRenderer(render);
+	SDL_DestroyTexture(introText);
+	SDL_FreeSurface(intro);
+	SDL_Quit();
 }
 
 //the function to intialize a window for click
@@ -112,6 +122,7 @@ void click(){
 				            printf("Setting over!\n");
 					        setting=false;
 					        SDL_DestroyWindow(window);
+							SDL_FreeSurface(surface);
 	                        SDL_Quit();
 					    break;
 						case SDLK_ESCAPE:
@@ -128,7 +139,138 @@ void click(){
 }
 
 //the function to display message on the window
-void title(int round){
-	char num[100]=" ";
-	int dead=Row*Column-alive;
+int title(int round){
+	//open fount library
+	if (TTF_Init()==-1){
+		printf("Unable to open font library!%s\n",TTF_GetError());
+		return -1;
+	}
+	//set font and size
+	TTF_Font *font=TTF_OpenFont("arial.ttf",16);
+	if (!font){
+		printf("TTF_OpenFont: Open simsun.ttf %s\n", TTF_GetError());
+		return -1; 
+	}
+	//deal with every step
+	if (round>-1){
+		if (SDL_Init(SDL_INIT_EVERYTHING)<0){
+    	printf("Unable to initialise SDL: %s\n", SDL_GetError());
+		SDL_Quit();
+	    return -1;
+	    }
+	    text=SDL_CreateWindow(
+	        "Result of game",
+		    0,
+		    0,
+		    200,
+		    200,
+		    SDL_WINDOW_SHOWN
+	    );
+		time (&t);//get Unix time
+        lt=localtime (&t);//turn into time struct
+		int deaded=Row*Column-alive;
+	    char message[200]=" ";
+	    snprintf(message,sizeof(message),"Alive: %d.  Dead: %d. Step: %d. %d/%d/%d %d:%d:%d",alive,deaded,round,lt->tm_year+1900, lt->tm_mon+1, lt->tm_mday, lt->tm_hour, lt->tm_min, lt->tm_sec);
+		SDL_Rect livecells={
+		    .x=50,
+		    .y=50,
+		    .w=100,
+		    .h=100,
+	    };
+		render=SDL_CreateRenderer(text,-1,0);
+        //rendering the message
+		SDL_Color livemessage={255,0,0,0};
+		intro=TTF_RenderText_Solid_Wrapped(font,message,livemessage,100);
+		introText=SDL_CreateTextureFromSurface(render, intro);
+		//clean the render and copy the txture to surface
+	    SDL_RenderClear(render);
+	    SDL_RenderCopy(render,introText,NULL,&livecells);
+	    SDL_RenderPresent(render);
+		return 0;
+	}
+
+	//initila a new window to show tips
+	if (SDL_Init(SDL_INIT_EVERYTHING)<0){
+    	printf("Unable to initialise SDL: %s\n", SDL_GetError());
+		SDL_Quit();
+	    return -1;
+	}
+	text=SDL_CreateWindow(
+	    "Tips for the game",
+		SDL_WINDOWPOS_CENTERED,
+		SDL_WINDOWPOS_CENTERED,
+		300,
+		300,
+		SDL_WINDOW_SHOWN
+	);
+	if (text == NULL) {
+	 	printf("Unable to create window: %s\n", SDL_GetError());
+	 	SDL_Quit();
+	    return -1;
+	}
+	//create the render
+	render=SDL_CreateRenderer(text,-1,0);
+	//display welcome message
+	if (round==-2){
+	    //the area to show the message
+	    SDL_Rect welcome={
+		    .x=25,
+		    .y=100,
+		    .w=250,
+		    .h=50,
+	    };   
+	    //set color and create surface
+	    SDL_Color color={0,255,0,0};
+	    intro = TTF_RenderUTF8_Blended_Wrapped(font,"Welcome to conway's game of life!       Press any key to continue...",color,250);
+	    introText= SDL_CreateTextureFromSurface(render, intro);
+	    //clean the render and copy the txture to surface
+	    SDL_RenderClear(render);
+	    SDL_RenderCopy(render,introText,NULL,&welcome);
+	    SDL_RenderPresent(render);
+	    bool Quit=false;
+		while (!Quit){
+			while (SDL_PollEvent(&event) != 0) {
+		        switch (event.type) {
+					case SDL_KEYDOWN:
+					Quit=true;
+					break;
+				}
+			}
+		}
+	}
+	//show tips when playing the game
+	if (round==-1){
+		SDL_Rect tips={
+		    .x=30,
+		    .y=100,
+		    .w=250,
+		    .h=85,
+	    };   
+	    //set color and create surface
+	    SDL_Color color={255,255,0,0};
+	    intro = TTF_RenderUTF8_Blended_Wrapped(font,"Press 'Backspace' to re-intialize. Press 'Enter' to reset the game.    Press 'Esc' to quit.                         Any key to continue...",color,250);
+	    introText= SDL_CreateTextureFromSurface(render, intro);
+	    //clean the render and copy the txture to surface
+	    SDL_RenderClear(render);
+	    SDL_RenderCopy(render,introText,NULL,&tips);
+	    SDL_RenderPresent(render);
+		bool Quit=false;
+		while (!Quit){
+			while (SDL_PollEvent(&event) != 0) {
+		        switch (event.type) {
+					case SDL_KEYDOWN:
+					Quit=true;
+					break;
+				}
+			}
+		}
+	}
+	TTF_CloseFont(font);
+	TTF_Quit();
+	SDL_DestroyWindow(text); 
+	SDL_DestroyRenderer(render);
+	SDL_DestroyTexture(introText);
+	SDL_FreeSurface(intro);
+	SDL_Quit();  
+	return 0;
 }

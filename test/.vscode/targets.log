@@ -6,10 +6,12 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat May 14 09:46:08 2022
+# Make data base, printed on Sun May 15 10:21:10 2022
 
 # Variables
 
+# environment
+FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # makefile (from 'Makefile', line 23)
 C_COMPILER = gcc
 # environment
@@ -25,10 +27,10 @@ USERPROFILE = C:\Users\frank
 # environment
 C_INCLUDE_PATH = D:\SDL2-2.0.20\x86_64-w64-mingw32\include
 # environment
-LOCALAPPDATA = C:\Users\frank\AppData\Local
+LOCALAPPDATA  
+= C:\Users\frank\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTH 
-OST = \\.\pipe\vscode-ipc-996db286-fb8d-48e8-84e0-4aca66ca1d9e-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-5b19b149-528a-4902-9b56-12252a515d03-sock
 # makefile (from 'Makefile', line 47)
 TARGET_BASE2 = test2
 # environment
@@ -44,7 +46,9 @@ MAKE_COMMAND := make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_2396_WBNPZUTLSLKJNCJZ
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_13688_WBSUHNQLBHLWEIMV
+# environment
+FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -100,7 +104,7 @@ VSCODE_VERBOSE_LOGGING = true
 # makefile (from 'Makefile', line 28)
 UNITY_ROOT = ../..
 # environment
-VSCODE_PID = 2396
+VSCODE_PID = 13688
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -238,7 +242,7 @@ PROCESSOR_REVISION = 7e05
 # environment
 PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 126 Stepping 5, GenuineIntel
 # variable set hash-table stats:
-# Load=113/1024=11%, Rehash=0, Collisions=12/190=6%
+# Load=115/1024=11%, Rehash=0, Collisions=13/192=7%
 
 # Pattern-specific Variable Values
 
@@ -388,6 +392,6 @@ test/test_runners/TestProductionCode_Runner.c: test/TestProductionCode.c
 # strcache performance: lookups = 42 / hit rate = 52%
 # hash-table stats:
 # Load=20/8192=0%, Rehash=0, Collisions=0/42=0%
-# Finished Make data base on Sat May 14 09:46:08 2022
+# Finished Make data base on Sun May 15 10:21:10 2022
 
  

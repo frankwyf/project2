@@ -100,8 +100,8 @@ int map(){
     char *row=(char *)malloc(sizeof(int) + sizeof(char));
     char *column=(char *)malloc(sizeof(int) + sizeof(char));
     //get user input and check if it is valid or not
-    printf("Enter Rows of the Game (up to 1024):");
-    fgets(row,6,stdin);
+    printf("Enter Rows of the Game (up to 200):");
+    fgets(row,5,stdin);
     row[strlen(row)-1]='\0';//get rid of the '\n' at the last of the input 
 	int j;
 	for (j=0;j<strlen(row);j++){
@@ -112,17 +112,17 @@ int map(){
 		else{continue;}
 	}
     Row=atoi(row);
-    if (Row>1024){
-        printf("Over 1024 rows! Screen can't hold that much!\n");
+    if (Row>200){
+        printf("Over 200 rows! Screen can't hold that much!\n");
         return 1;
     }
     //check the number is valid or not 
-    if (Row<2){
+    if (Row<1){
         printf("\nInvalid Row number!\n");
 		return 1;
     }
-    printf("Enter columns of the Game (up to 1024):");
-    fgets(column,6,stdin);
+    printf("Enter columns of the Game (up to 200):");
+    fgets(column,5,stdin);
     column[strlen(column)-1]='\0';//get rid of the '\n' at the last of the input
 	for (j=0;j<strlen(column);j++){
 		if (!isdigit(column[j])){
@@ -132,12 +132,12 @@ int map(){
 		else{continue;}
 	}
     Column=atoi(column);
-    if (Column>1024){
-        printf("Over 1024 columns! Screen can't hold that much!\n");
+    if (Column>200){
+        printf("Over 200 columns! Screen can't hold that much!\n");
         return 1;
     }
     //check the number is valid or not 
-    if (Column<2){
+    if (Column<1){
         printf("\nInvalid Row number!\n");
 		return 1;
     }
@@ -415,9 +415,9 @@ void NextGen(int **map){
 
 //the function to print every step of the game
 void ShowGen(){
+    move=1;
     //display the game result
     if (Step!=0){
-        int move=0;
         //SDL event to control window
         bool quit = false;
         while (!quit) {
@@ -434,7 +434,7 @@ void ShowGen(){
                             ShowGen();
                             break;
                         case SDLK_ESCAPE:
-                            printf("Manually terminated at step %i.\n",move);
+                            printf("Manually terminated at step %i.\n",move-1);
 			                quit = true;
                             Step=move;
 			                return;
@@ -442,6 +442,7 @@ void ShowGen(){
                             //reconfigure the game
                             printf("Preparing to re-esatblish the game...\n");
                             SDL_DestroyWindow(window);
+                            SDL_FreeSurface(surface);
 	                        SDL_Quit();
                             click();
                             //reopen the window, as a new game do
@@ -460,22 +461,21 @@ void ShowGen(){
 			            return;
 		        }
 	        }
-            if(move<Step){
-                printf("Step: %d\n",move+1);
+            if(move<=Step){
+                printf("Step: %d\n",move);
                 move++;
                 NextGen(NextGeneration);
                 printf("\n--------------------------------------------------------------------------------------------------------------------\n\n");
                 show(Game);
             }
             else{
-                printf("Terminated at step %i.\n",move);
+                printf("Terminated at step %i.\n",move-1);
                 quit=true;
             }
         }
     }
     else{
         printf("Infinite steps! Termiante the game when you want.\n");
-        int life=1;
         //SDL event to control window
         bool quit = false;
         while (!quit) {
@@ -488,41 +488,42 @@ void ShowGen(){
                         //replay the game
                             Readfile(game);
                             //update the value of step
-                            Step=life-1;
+                            Step=move-1;
                             show(Game);
                             ShowGen();
                             printf("==========================\nGame replay is over.Continue eveloving...\n");
                             break;
                         case SDLK_ESCAPE:
-                            printf("Manually terminated at step %i.\n",life-1);
+                            printf("Manually terminated at step %i.\n",move-1);
 			                quit = true;
-                            Step=life;
+                            Step=move;
 			                return;
                         case SDLK_BACKSPACE:
                         //reconfigure the game
                             printf("Preparing to re-esatblish the game...\n");
                             SDL_DestroyWindow(window);
+                            SDL_FreeSurface(surface);
 	                        SDL_Quit();
                             click();
                             //reopen the window, as a new game do
                             InitWindow();
                             show(Game);
-                            life=1;
+                            move=1;
                             break;
                         }
                     break;
                     //use mouse to press exit button
 		            case SDL_QUIT:
 		            case SDL_MOUSEBUTTONDOWN:
-                        printf("Terminated at step %i.\n",life-1);
+                        printf("Terminated at step %i.\n",move-1);
 			            quit = true;
-                        Step=life;
+                        Step=move;
 			            return;
 		        }
 	        }
-            printf("Step: %d\n",life);
+            printf("Step: %d\n",move);
             NextGen(NextGeneration);
-            life++;
+            move++;
             printf("\n--------------------------------------------------------------------------------------------------------------------\n\n");
             show(Game);
         }

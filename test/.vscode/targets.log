@@ -6,7 +6,7 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun May 15 10:21:10 2022
+# Make data base, printed on Sun May 15 22:58:23 2022
 
 # Variables
 
@@ -27,10 +27,9 @@ USERPROFILE = C:\Users\frank
 # environment
 C_INCLUDE_PATH = D:\SDL2-2.0.20\x86_64-w64-mingw32\include
 # environment
-LOCALAPPDATA  
-= C:\Users\frank\AppData\Local
+LOCALAPPDATA = C:\Users\frank\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-5b19b149-528a-4902-9b56-12252a515d03-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-ab2f9848-55df-4d23-b3ce-d365a2fd04be-sock
 # makefile (from 'Makefile', line 47)
 TARGET_BASE2 = test2
 # environment
@@ -46,7 +45,7 @@ MAKE_COMMAND := make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_13688_WBSUHNQLBHLWEIMV
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_11156_INIVNAJLTPVMGALF
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -80,7 +79,7 @@ CURDIR := d:/programming_project/CWK2/code/test
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # makefile (from 'Makefile', line 48)
 TARGET1 = $(TARGET_BASE1)$(TARGET_EXTENSION)
 # automatic
@@ -104,7 +103,7 @@ VSCODE_VERBOSE_LOGGING = true
 # makefile (from 'Makefile', line 28)
 UNITY_ROOT = ../..
 # environment
-VSCODE_PID = 13688
+VSCODE_PID = 11156
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -392,6 +391,6 @@ test/test_runners/TestProductionCode_Runner.c: test/TestProductionCode.c
 # strcache performance: lookups = 42 / hit rate = 52%
 # hash-table stats:
 # Load=20/8192=0%, Rehash=0, Collisions=0/42=0%
-# Finished Make data base on Sun May 15 10:21:10 2022
+# Finished Make data base on Sun May 15 22:58:23 2022
 
  

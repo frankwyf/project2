@@ -442,7 +442,6 @@ void ShowGen(){
                             //reconfigure the game
                             printf("Preparing to re-esatblish the game...\n");
                             SDL_DestroyWindow(window);
-                            SDL_FreeSurface(surface);
 	                        SDL_Quit();
                             click();
                             //reopen the window, as a new game do
@@ -465,7 +464,7 @@ void ShowGen(){
                 printf("Step: %d\n",move);
                 move++;
                 NextGen(NextGeneration);
-                printf("\n--------------------------------------------------------------------------------------------------------------------\n\n");
+                printf("\n---------------------------------------------------------------------------------\n\n");
                 show(Game);
             }
             else{
@@ -485,7 +484,7 @@ void ShowGen(){
 		            case SDL_KEYDOWN:
                         switch (e.key.keysym.sym){
                         case SDLK_RETURN:
-                        //replay the game
+                            //replay the game
                             Readfile(game);
                             //update the value of step
                             Step=move-1;
@@ -502,7 +501,6 @@ void ShowGen(){
                         //reconfigure the game
                             printf("Preparing to re-esatblish the game...\n");
                             SDL_DestroyWindow(window);
-                            SDL_FreeSurface(surface);
 	                        SDL_Quit();
                             click();
                             //reopen the window, as a new game do
@@ -524,7 +522,7 @@ void ShowGen(){
             printf("Step: %d\n",move);
             NextGen(NextGeneration);
             move++;
-            printf("\n--------------------------------------------------------------------------------------------------------------------\n\n");
+            printf("\n---------------------------------------------------------------------------------\n\n");
             show(Game);
         }
     } 
@@ -542,7 +540,7 @@ void PrintMap(){
         }
         printf(" |\n");
     }
-    printf("\n--------------------------------------------------------------------------------------------------------------------\n\n");
+    printf("\n---------------------------------------------------------------------------------\n\n");
 }
 
 //the function to ask palyer whether to replay the game or not

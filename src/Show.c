@@ -24,7 +24,7 @@ int InitWindow(){
 		"Conway's Game of Life",
 		SDL_WINDOWPOS_CENTERED, 
 		SDL_WINDOWPOS_CENTERED,  //position of the window
-		600, //width of the window
+		800, //width of the window
 		600,  //height of the window
 		SDL_WINDOW_SHOWN //widow is visible
 	);
@@ -81,13 +81,12 @@ void show(int **Game){
 	}
 	SDL_UpdateWindowSurface(window);
 	title(move);
-    SDL_Delay(Delay);
+	SDL_Delay(Delay);
 	TTF_Quit();
 	SDL_DestroyWindow(text); 
 	SDL_DestroyRenderer(render);
 	SDL_DestroyTexture(introText);
 	SDL_FreeSurface(intro);
-	SDL_Quit();
 }
 
 //the function to intialize a window for click
@@ -122,7 +121,6 @@ void click(){
 				            printf("Setting over!\n");
 					        setting=false;
 					        SDL_DestroyWindow(window);
-							SDL_FreeSurface(surface);
 	                        SDL_Quit();
 					    break;
 						case SDLK_ESCAPE:
@@ -154,9 +152,9 @@ int title(int round){
 	//deal with every step
 	if (round>-1){
 		if (SDL_Init(SDL_INIT_EVERYTHING)<0){
-    	printf("Unable to initialise SDL: %s\n", SDL_GetError());
-		SDL_Quit();
-	    return -1;
+    	    printf("Unable to initialise SDL: %s\n", SDL_GetError());
+		    SDL_Quit();
+	        return -1;
 	    }
 	    text=SDL_CreateWindow(
 	        "Result of game",
@@ -186,9 +184,15 @@ int title(int round){
 	    SDL_RenderClear(render);
 	    SDL_RenderCopy(render,introText,NULL,&livecells);
 	    SDL_RenderPresent(render);
+		bool Quit=false;
+		while (!Quit){
+			while (SDL_PollEvent(&event) != 0) {
+		        SDL_Delay(100);
+				Quit=true;
+			}
+		}
 		return 0;
 	}
-
 	//initila a new window to show tips
 	if (SDL_Init(SDL_INIT_EVERYTHING)<0){
     	printf("Unable to initialise SDL: %s\n", SDL_GetError());

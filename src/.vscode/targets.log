@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun May 15 10:21:10 2022
+# Make data base, printed on Sun May 15 22:58:25 2022
 
 # Variables
 
@@ -31,7 +31,7 @@ C_INCLUDE_PATH = D:\SDL2-2.0.20\x86_64-w64-mingw32\include
 # environment
 LOCALAPPDATA = C:\Users\frank\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-35473152-3909-4bc4-a51f-ff52ae709782-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-7e6dc0e6-4177-42d2-b4ae-485478de6e4d-sock
 # environment
 VSCODE_CWD = D:\Microsoft VS Code
 # environment
@@ -47,7 +47,7 @@ MAKE_COMMAND := make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_13688_WBSUHNQLBHLWEIMV
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_11156_INIVNAJLTPVMGALF
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -81,7 +81,7 @@ CURDIR := d:/programming_project/CWK2/code/src
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # automatic
 *D = $(patsubst %/,%,$(patsubst %\,%,$(dir $*)))
 # environment
@@ -101,7 +101,7 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 13688
+VSCODE_PID = 11156
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -237,9 +237,9 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 126 Stepping 5, GenuineIntel
 
 # Directories
 
-# . (key d:/programming_project/CWK2/code/src, mtime 1652533992): 13 files, no impossibilities.
+# . (key d:/programming_project/CWK2/code/src, mtime 1652625333): 14 files, no impossibilities.
 
-# 13 files, no impossibilities in 1 directories.
+# 14 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -359,12 +359,12 @@ GameOfLife.o: GameOfLife.c DataStructure.h NextGenre.h Check.h GameWindow.h
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 23 / storage = 189 B / avg = 8 B
-# current buf: size = 8162 B / used = 189 B / count = 23 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 24 / storage = 199 B / avg = 8 B
+# current buf: size = 8162 B / used = 199 B / count = 24 / avg = 8 B
 
-# strcache performance: lookups = 47 / hit rate = 51%
+# strcache performance: lookups = 48 / hit rate = 50%
 # hash-table stats:
-# Load=23/8192=0%, Rehash=0, Collisions=0/47=0%
-# Finished Make data base on Sun May 15 10:21:10 2022
+# Load=24/8192=0%, Rehash=0, Collisions=0/48=0%
+# Finished Make data base on Sun May 15 22:58:25 2022
 
  

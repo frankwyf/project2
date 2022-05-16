@@ -177,7 +177,7 @@ int title(int round){
 	    };
 		render=SDL_CreateRenderer(text,-1,0);
         //rendering the message
-		SDL_Color livemessage={255,0,0,0};
+		SDL_Color livemessage={220,20,60,0};
 		intro=TTF_RenderText_Solid_Wrapped(font,message,livemessage,100);
 		introText=SDL_CreateTextureFromSurface(render, intro);
 		//clean the render and copy the txture to surface
@@ -225,7 +225,7 @@ int title(int round){
 	    };   
 	    //set color and create surface
 	    SDL_Color color={0,255,0,0};
-	    intro = TTF_RenderUTF8_Blended_Wrapped(font,"Welcome to conway's game of life!       Press any key to continue...",color,250);
+	    intro = TTF_RenderUTF8_Blended_Wrapped(font,"Welcome to conway's game of life!         Game will start soon ...",color,250);
 	    introText= SDL_CreateTextureFromSurface(render, intro);
 	    //clean the render and copy the txture to surface
 	    SDL_RenderClear(render);
@@ -234,11 +234,8 @@ int title(int round){
 	    bool Quit=false;
 		while (!Quit){
 			while (SDL_PollEvent(&event) != 0) {
-		        switch (event.type) {
-					case SDL_KEYDOWN:
-					Quit=true;
-					break;
-				}
+				SDL_Delay(300);
+				Quit=true;
 			}
 		}
 	}
@@ -269,6 +266,33 @@ int title(int round){
 			}
 		}
 	}
+	//dsiplay goodbye message
+	if (round==-3){
+		char message[200]=" ";
+	    snprintf(message,sizeof(message),"End of Game! Good Bye. %d/%d/%d %d:%d:%d",lt->tm_year+1900, lt->tm_mon+1, lt->tm_mday, lt->tm_hour, lt->tm_min, lt->tm_sec);
+	    //the area to show the message
+	    SDL_Rect welcome={
+		    .x=50,
+		    .y=100,
+		    .w=250,
+		    .h=50,
+	    };   
+	    //set color and create surface
+	    SDL_Color color={72,209,204,0};
+	    intro = TTF_RenderUTF8_Solid_Wrapped(font,message,color,250);
+	    introText= SDL_CreateTextureFromSurface(render, intro);
+	    //clean the render and copy the txture to surface
+	    SDL_RenderClear(render);
+	    SDL_RenderCopy(render,introText,NULL,&welcome);
+	    SDL_RenderPresent(render);
+	    bool Quit=false;
+		while (!Quit){
+			while (SDL_PollEvent(&event) != 0) {
+				SDL_Delay(200);
+				Quit=true;
+			}
+		}
+	}
 	TTF_CloseFont(font);
 	TTF_Quit();
 	SDL_DestroyWindow(text); 
@@ -278,3 +302,5 @@ int title(int round){
 	SDL_Quit();  
 	return 0;
 }
+
+

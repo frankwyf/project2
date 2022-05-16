@@ -103,6 +103,7 @@ int main(int argc, char **argv){
 	SDL_Quit();
     //offer replay mode for finite steps
     replay();
+    title(-3);
     //write the result 
     if (WriteResult(game)==-1){
         time (&t);//get Unix time

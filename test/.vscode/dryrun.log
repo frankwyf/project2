@@ -4,9 +4,7 @@ make: Entering directory 'd:/programming_project/CWK2/code/test'
 rm -f test1.exe test2.exe
  
 make: *** No rule to make target '../../src/unity.c', needed by 'default'.
-
 make: *** No rule to make target 'src/ProductionCode.c', needed by 'default'.
-
 make: *** No rule to make target 'test/TestProductionCode.c', needed by 'default'.
 make: *** No rule to make target 'src/ProductionCode2.c', needed by 'default'.
 make: *** No rule to make target 'test/TestProductionCode2.c', needed by 'default'.

@@ -21,11 +21,13 @@ void Ask(){
     fflush(stdin); 
     if (Option=='y'){
         //wait until user input is valid
-        while (map()==1){
-            map();
+        int size=map();
+        while (size==1){
+            size=map();
         }
-        while (delay()==-1){
-            delay();
+        int late=delay();
+        while (late==-1){
+            late=delay();
         }
         //create the initial map
         printf("Initialzing new game with size: %i X %i...\n\n",Row,Column);
@@ -45,7 +47,7 @@ int steps(){
     int i;
     for (i=0;i<strlen(step);i++){
 		if (!isdigit(step[i])){
-			printf("\nInvalid Input! try again.\n");
+			printf("**************\nInvalid Input! try again.\n");
 			return -1;
 		}
 		else{continue;}
@@ -53,7 +55,7 @@ int steps(){
     Step=atoi(step);
     //check the number is valid or not 
     if (Step<0){
-        printf("\nInvalid Step number!\n");
+        printf("**************\nInvalid Step number!\n");
 		return -1;
     }
     if (Step==0){
@@ -69,26 +71,37 @@ int steps(){
 
 //ask the player how fast it want the game to display
 int delay(){
-    printf("How fast do you want the evolution ? (enter in milliseconds):");
-    char *delay=(char *)malloc(sizeof(int) + sizeof(char));
-    fgets(delay,5,stdin);
-    delay[strlen(delay)-1]='\0';
-    int i;
-    for (i=0;i<strlen(delay);i++){
-		if (!isdigit(delay[i])){
-			printf("\nInvalid Input! try again.\n");
-			return -1;
-		}
-		else{continue;}
-	}
-    Delay=atoi(delay);
-    //check the number is valid or not 
-    if (Delay<0){
-        printf("\nInvalid Step number!\n");
-		return -1;
+    printf("Current game animates every %d milliseconds would you like to change? ");
+    char fast=getchar();
+    //delete redundant keybord input stream
+    fflush(stdin); 
+    if (fast=='y'){
+        printf("How fast do you want the evolution ? (enter in milliseconds):");
+        char *delay=(char *)malloc(sizeof(int) + sizeof(char));
+        fgets(delay,5,stdin);
+        delay[strlen(delay)-1]='\0';
+        int i;
+        for (i=0;i<strlen(delay);i++){
+		    if (!isdigit(delay[i])){
+			    printf("**************\nInvalid Input! try again.\n");
+			    return -1;
+		    }
+		    else{continue;}
+	    }
+        Delay=atoi(delay);
+        //check the number is valid or not 
+        if (Delay<0){
+            printf("**************\nInvalid Step number!\n");
+		    return -1;
+        }
+        else{
+            printf("The Game of Life will evolute at %i millseconds.\n",Delay);
+            printf("\n----------------------------------------------------------\n\n");
+            return Delay;
+        }
     }
     else{
-        printf("The Game of Life will evolute at %i millseconds.\n",Delay);
+        printf("Animation speed (%d millisecond) unchanged!\n");
         printf("\n----------------------------------------------------------\n\n");
         return Delay;
     }
@@ -106,7 +119,7 @@ int map(){
 	int j;
 	for (j=0;j<strlen(row);j++){
 		if (!isdigit(row[j])){
-			printf("\nOnly numbers are allowed!\n\n");
+			printf("**************\nOnly numbers are allowed!\n\n");
 			return 1;
 		}
 		else{continue;}
@@ -118,7 +131,7 @@ int map(){
     }
     //check the number is valid or not 
     if (Row<1){
-        printf("\nInvalid Row number!\n");
+        printf("**************\nInvalid Row number!\n");
 		return 1;
     }
     printf("Enter columns of the Game (up to 200):");
@@ -126,7 +139,7 @@ int map(){
     column[strlen(column)-1]='\0';//get rid of the '\n' at the last of the input
 	for (j=0;j<strlen(column);j++){
 		if (!isdigit(column[j])){
-			printf("\nOnly numbers are allowed!\n");
+			printf("**************\nOnly numbers are allowed!\n");
 			return 1;
 		}
 		else{continue;}
@@ -138,7 +151,7 @@ int map(){
     }
     //check the number is valid or not 
     if (Column<1){
-        printf("\nInvalid Row number!\n");
+        printf("**************\nInvalid Row number!\n");
 		return 1;
     }
     //free the pointers
@@ -156,7 +169,7 @@ int Readfile(FILE *game){
         char temp[1024];
         char *read=fgets(temp,sizeof(temp),game);
         if (read==NULL){
-            printf("\nEmpty game file found. Please configure the game by hand.\n");
+            printf("**************************\nEmpty game file found. Please configure the game by hand.\n");
             return -1;
         }
         temp[strlen(temp)-1]='\0';
@@ -171,7 +184,7 @@ int Readfile(FILE *game){
                         len=strlen(data);
 	                        for (index=0;index<len;index++){
 		                        if (!isdigit(data[index])){
-			                        printf("\nBroken game file found. Please configure the game by hand.\n");
+			                        printf("**************************\nBroken game file found. Please configure the game by hand.\n");
 		                            return -1;
 	                            }
 		                        else{continue;}
@@ -183,7 +196,7 @@ int Readfile(FILE *game){
                         len=strlen(data);
 	                        for (index=0;index<len;index++){
 		                        if (!isdigit(data[index])){
-			                        printf("\nBroken game file found. Please configure the game by hand.\n");
+			                        printf("**************************\nBroken game file found. Please configure the game by hand.\n");
 		                            return -1;
 	                            }
 		                        else{continue;}
@@ -195,7 +208,7 @@ int Readfile(FILE *game){
                         len=strlen(data);
 	                        for (index=0;index<len;index++){
 		                        if (!isdigit(data[index])){
-			                        printf("\nBroken game file found. Please configure the game by hand.\n");
+			                        printf("**************************\nBroken game file found. Please configure the game by hand.\n");
 		                            return -1;
 	                            }
 		                        else{continue;}
@@ -205,7 +218,7 @@ int Readfile(FILE *game){
                         len=strlen(data);
 	                        for (index=0;index<len;index++){
 		                        if (!isdigit(data[index])){
-			                        printf("\nBroken game file found. Please configure the game by hand.\n");
+			                        printf("**************************\nBroken game file found. Please configure the game by hand.\n");
 		                            return -1;
 	                            }
 		                        else{continue;}
@@ -234,12 +247,12 @@ int Readfile(FILE *game){
             for (j=0;j<Column;j++){
                 for (index=0;index<strlen(cell);index++){
                     if (!isdigit(cell[index])){
-                        printf("\nInvalid cell found. Please configure the game by hand.\n");
+                        printf("**************************\nInvalid cell found. Please configure the game by hand.\n");
 		                return -1;
                     }
                 }
                 if (atoi(cell)!=1 && atoi(cell)!=0){
-                    printf("\nInvalid cell found. Please configure the game by hand.\n");
+                    printf("**************************\nInvalid cell found. Please configure the game by hand.\n");
 		            return -1;
                 }
                 else{
@@ -255,7 +268,7 @@ int Readfile(FILE *game){
     else{
         //creat a file named "Game.txt"
         game=fopen("Game.txt","wb");
-        printf("\nGame file lost!\nCreating a new one...\nManually configuration reqiured.\n\n");
+        printf("**************************\nGame file lost!\nCreating a new one...\nManually configuration reqiured.\n\n");
         fclose(game);
         return -1;
     }

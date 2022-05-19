@@ -22,31 +22,25 @@ int main(int argc, char **argv){
         //read the initial file in
         if (Readfile(game)==-1){
             //if file read in failed, start a new game
-            while (map()==1){
-                map();
+            int size=map();
+            while (size==1){
+                size=map();
             }
             printf("Initialzing new game with size: %i X %i...\n",Row,Column);
             initialGame();
-            while (delay()==-1){
-                delay();
-            }
-            while (steps()==-1){
-                steps();
+            int late=delay();
+            while (late==-1){
+                late=delay();
             }
         }
         else{
             printf("\n----------------------------------------------------------\n\n");
             Ask();
-            //ask for steps and
             printf("Last game stopped at step %i.\n",Step);
-            while (steps()==-1){
-                steps();
-            }
         }
     }
-    //configure size of game by commnad line argument 
+    //configure size of game by command line arguments 
     else{
-        printf("Intila state requires clicking on the map!\n");
         int j;
 	    for (j=0;j<strlen(argv[1]);j++){
 		    if (!isdigit(argv[1][j])){
@@ -61,30 +55,35 @@ int main(int argc, char **argv){
 			    exit(-1);
 		    }
 		    else{continue;}
-	    }
+        }
         //check whether the size is gthe same as defined in the file or not 
-        if (Row==atoi(argv[1]) && Column==atoi(argv[2])){
-            printf("Same size as last game!\n");
-            //read in initial file
-            if (Readfile(game)==-1){
-                //if file read in failed, start a new game
-                while (map()==1){
-                    map();
-                }
-                printf("Initialzing new game with size: %i X %i...\n",Row,Column);
+        if (Readfile(game)==-1){
+            //if file read in failed, start a new game
+            Row=atoi(argv[1]);
+            Column=atoi(argv[2]);
+            printf("Initial file lost...\nNew game with size: %i X %i...\n",Row,Column);
+            initialGame();
+        }
+        else{
+            if (Row==atoi(argv[1]) && Column==atoi(argv[2])){
+                printf("Same size as last game!\n");
+            }
+            else{
+                Row=atoi(argv[1]);
+                Column=atoi(argv[2]);
+                printf("Reopening a new game with given size %i X %i...\n",Row,Column);
                 initialGame();
             }
         }
-        else{
-            Row=atoi(argv[1]);
-            Column=atoi(argv[2]);
-            printf("Reopening a new game with given size %i X %i...\n",Row,Column);
-            initialGame();
+        //ask player for delay and steps
+        int late=delay();
+        while (late==-1){
+            late=delay();
         }
-        //take the steps form the player
-        while (steps()==-1){
-            steps();
-        }
+    }
+    int round=steps();
+    while (round==-1){
+        round=steps();
     }
     printf("Step 0:\n");
     PrintMap();

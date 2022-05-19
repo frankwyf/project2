@@ -6,7 +6,7 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon May 16 09:06:00 2022
+# Make data base, printed on Thu May 19 18:10:09 2022
 
 # Variables
 
@@ -27,9 +27,10 @@ USERPROFILE = C:\Users\frank
 # environment
 C_INCLUDE_PATH = D:\SDL2-2.0.20\x86_64-w64-mingw32\include
 # environment
-LOCALAPPDATA = C:\Users\frank\AppData\Local
+LOCALAPPDATA  
+= C:\Users\frank\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-7880693f-0d46-409c-b5a0-e5d2cdc6bbe9-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-a62326c7-da11-457b-9999-aee9bd04442c-sock
 # makefile (from 'Makefile', line 47)
 TARGET_BASE2 = test2
 # environment
@@ -45,7 +46,7 @@ MAKE_COMMAND := make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_13232_AZUYVVXYZLKYPJYM
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_38756_DALGPKUGKNKCJQQB
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -103,7 +104,7 @@ VSCODE_VERBOSE_LOGGING = true
 # makefile (from 'Makefile', line 28)
 UNITY_ROOT = ../..
 # environment
-VSCODE_PID = 13232
+VSCODE_PID = 38756
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -391,6 +392,6 @@ test/test_runners/TestProductionCode_Runner.c: test/TestProductionCode.c
 # strcache performance: lookups = 42 / hit rate = 52%
 # hash-table stats:
 # Load=20/8192=0%, Rehash=0, Collisions=0/42=0%
-# Finished Make data base on Mon May 16 09:06:00 2022
+# Finished Make data base on Thu May 19 18:10:09 2022
 
  

@@ -4,7 +4,7 @@
 EXE_DIR = .
 EXE = $(EXE_DIR)/game
 
-SRC= main.c GameOfLife.c Show.c
+SRC= main.c GameOfLife.c Show.c Check.c
 
 # generic build details
 
@@ -33,5 +33,6 @@ clean:
 # dependencies
 
 main.o:  main.c DataStructure.h NextGenre.h GameWindow.h
-GameOfLife.o:  GameOfLife.c DataStructure.h NextGenre.h Check.h GameWindow.h
+GameOfLife.o:  GameOfLife.c DataStructure.h NextGenre.h GameWindow.h
 Shwo.o: Show.c DataStructure.h GameWindow.h
+Check.o: Check.c Check.h DataStructure.h

@@ -22,14 +22,12 @@
 #include "unity.h"
 #include <setjmp.h>
 #include <stdio.h>
-#include "ProductionCode2.h"
+#include "DataStructure.h"
 
 /*=======External Functions This Runner Calls=====*/
 extern void setUp(void);
 extern void tearDown(void);
-extern void test_IgnoredTest(void);
-extern void test_AnotherIgnoredTest(void);
-extern void test_ThisFunctionHasNotBeenTested_NeedsToBeImplemented(void);
+extern void test_map_validinput(void);
 
 
 /*=======Test Reset Option=====*/
@@ -44,10 +42,8 @@ void resetTest(void)
 /*=======MAIN=====*/
 int main(void)
 {
-  UnityBegin("test/TestProductionCode2.c");
-  RUN_TEST(test_IgnoredTest, 18);
-  RUN_TEST(test_AnotherIgnoredTest, 23);
-  RUN_TEST(test_ThisFunctionHasNotBeenTested_NeedsToBeImplemented, 28);
+  UnityBegin("test/TestProductionCode.c");
+  RUN_TEST(test_map_validinput);
 
   return (UnityEnd());
 }

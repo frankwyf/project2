@@ -1,11 +1,7 @@
 
-#include "ProductionCode.h"
+#include "DataStructure.h"
 #include "unity.h"
 
-/* sometimes you may want to get at local data in a module.
- * for example: If you plan to pass by reference, this could be useful
- * however, it should often be avoided */
-extern int Counter;
 
 void setUp(void)
 {
@@ -17,14 +13,12 @@ void tearDown(void)
 {
 }
 
-void test_FindFunction_WhichIsBroken_ShouldReturnZeroIfItemIsNotInList_WhichWorksEvenInOurBrokenCode(void)
+void test_map_validinput(void)
 {
+  Row=123;
+  Column=123;
   /* All of these should pass */
-  TEST_ASSERT_EQUAL(0, FindFunction_WhichIsBroken(78));
-  TEST_ASSERT_EQUAL(0, FindFunction_WhichIsBroken(2));
-  TEST_ASSERT_EQUAL(0, FindFunction_WhichIsBroken(33));
-  TEST_ASSERT_EQUAL(0, FindFunction_WhichIsBroken(999));
-  TEST_ASSERT_EQUAL(0, FindFunction_WhichIsBroken(-1));
+  TEST_ASSERT_EQUAL(0, map());
 }
 
 void test_FindFunction_WhichIsBroken_ShouldReturnTheIndexForItemsInList_WhichWillFailBecauseOurFunctionUnderTestIsBroken(void)

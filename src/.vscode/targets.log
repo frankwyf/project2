@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri May 20 14:11:26 2022
+# Make data base, printed on Fri May 20 21:36:02 2022
 
 # Variables
 
@@ -23,7 +23,7 @@ OBJ = $(SRC:.c=.o)
 # environment
 LC_ALL = C
 # makefile (from 'Makefile', line 7)
-SRC = main.c GameOfLife.c Show.c
+SRC = main.c GameOfLife.c Show.c Check.c
 # environment
 USERPROFILE = C:\Users\frank
 # environment
@@ -81,7 +81,7 @@ CURDIR := d:/programming_project/CWK2/code/src
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # automatic
 *D = $(patsubst %/,%,$(patsubst %\,%,$(dir $*)))
 # environment
@@ -237,9 +237,9 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 126 Stepping 5, GenuineIntel
 
 # Directories
 
-# . (key d:/programming_project/CWK2/code/src, mtime 1652971095): 14 files, no impossibilities.
+# . (key d:/programming_project/CWK2/code/src, mtime 1653053754): 15 files, no impossibilities.
 
-# 14 files, no impossibilities in 1 directories.
+# 15 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -254,7 +254,7 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 126 Stepping 5, GenuineIntel
 #  recipe to execute (from 'Makefile', line 21):
 	$(CC) $(CFLAGS) -c -o $@ $< 
 
-game: main.o GameOfLife.o Show.o
+game: main.o GameOfLife.o Show.o Check.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -269,7 +269,7 @@ Shwo.o: Show.c DataStructure.h GameWindow.h
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-13 14:24:34
+#  Last modified 2022-05-20 21:34:48
 #  File has been updated.
 #  Successfully updated.
 
@@ -285,6 +285,11 @@ clean:
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 31):
 	rm -f $(OBJ) $(EXE)
+
+Check.o: Check.c Check.h DataStructure.h
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 GameWindow.h:
@@ -329,6 +334,12 @@ GameOfLife.c:
 #  Modification time never checked.
 #  File has not been updated.
 
+# Not a target:
+Check.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
 main.o: main.c DataStructure.h NextGenre.h GameWindow.h
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -346,25 +357,25 @@ NextGenre.h:
 #  Modification time never checked.
 #  File has not been updated.
 
-GameOfLife.o: GameOfLife.c DataStructure.h NextGenre.h Check.h GameWindow.h
+GameOfLife.o: GameOfLife.c DataStructure.h NextGenre.h GameWindow.h
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=18/1024=2%, Rehash=0, Collisions=0/45=0%
+# Load=20/1024=2%, Rehash=0, Collisions=0/51=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 24 / storage = 199 B / avg = 8 B
-# current buf: size = 8162 B / used = 199 B / count = 24 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 26 / storage = 215 B / avg = 8 B
+# current buf: size = 8162 B / used = 215 B / count = 26 / avg = 8 B
 
-# strcache performance: lookups = 48 / hit rate = 50%
+# strcache performance: lookups = 54 / hit rate = 51%
 # hash-table stats:
-# Load=24/8192=0%, Rehash=0, Collisions=0/48=0%
-# Finished Make data base on Fri May 20 14:11:26 2022
+# Load=26/8192=0%, Rehash=0, Collisions=0/54=0%
+# Finished Make data base on Fri May 20 21:36:02 2022
 
  

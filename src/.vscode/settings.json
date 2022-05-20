@@ -4,6 +4,8 @@
         "stdlib.h": "c",
         "gamewindow.h": "c",
         "nextgenre.h": "c",
-        "sdl.h": "c"
+        "sdl.h": "c",
+        "datastructure.h": "c",
+        "check.h": "c"
     }
 }

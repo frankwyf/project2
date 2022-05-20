@@ -1,10 +1,12 @@
-make.exe --dry-run --always-make --keep-going --print-directory
+make.exe --dry-run --keep-going --print-directory
 make: Entering directory 'd:/programming_project/CWK2/code/src'
 gcc -Wall -O -c -o main.o main.c 
  
 gcc -Wall -O -c -o GameOfLife.o GameOfLife.c 
  
 gcc -Wall -O -c -o Show.o Show.c 
-gcc main.o GameOfLife.o Show.o -o ./game -lSDL2 -lSDL2_ttf 
+ 
+gcc -Wall -O -c -o Check.o Check.c 
+gcc main.o GameOfLife.o Show.o Check.o -o ./game -lSDL2 -lSDL2_ttf 
 make: Leaving directory 'd:/programming_project/CWK2/code/src'
  

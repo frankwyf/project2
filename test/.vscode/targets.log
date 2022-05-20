@@ -6,7 +6,7 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri May 20 10:31:55 2022
+# Make data base, printed on Fri May 20 21:36:58 2022
 
 # Variables
 
@@ -83,7 +83,8 @@ APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # makefile (from 'Makefile', line 48)
 TARGET1 = $(TARGET_BASE1)$(TARGET_EXTENSION)
 # automatic
-*D = $(patsubst %/,%,$(patsubst %\,%,$(dir $*)))
+*D = $(pats 
+ubst %/,%,$(patsubst %\,%,$(dir $*)))
 # environment
 PROGRAMFILES = C:\Program Files
 # environment
@@ -181,11 +182,11 @@ GNUMAKEFLAGS :=
 # environment
 OS = Windows_NT
 # makefile (from 'Makefile', line 50)
-SRC_FILES1 = $(UNITY_ROOT)/src/unity.c src/ProductionCode.c  test/TestProductionCode.c  test/test_runners/TestProductionCode_Runner.c
+SRC_FILES1 = $(UNITY_ROOT)/src/unity.c src/GameOfLife.c  test/TestDataStrcture.c  test/test_runners/TestDataStructure_Runner.c
 # makefile
 .DEFAULT_GOAL := all
 # makefile (from 'Makefile', line 51)
-SRC_FILES2 = $(UNITY_ROOT)/src/unity.c src/ProductionCode2.c test/TestProductionCode2.c test/test_runners/TestProductionCode2_Runner.c
+SRC_FILES2 = $(UNITY_ROOT)/src/unity.c src/Check.c test/TestCheck.c test/test_runners/TestCheck_Runner.c
 # environment
 LIBRARY_PATH = D:\SDL2-2.0.20\x86_64-w64-mingw32\lib
 # default
@@ -249,7 +250,7 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 126 Stepping 5, GenuineIntel
 
 # Directories
 
-# . (key d:/programming_project/CWK2/code/test, mtime 1652025209): 7 files, no impossibilities.
+# . (key d:/programming_project/CWK2/code/test, mtime 1653053067): 7 files, no impossibilities.
 
 # 7 files, no impossibilities in 1 directories.
 
@@ -259,14 +260,20 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 126 Stepping 5, GenuineIntel
 
 # Files
 
-test/test_runners/TestProductionCode2_Runner.c: test/TestProductionCode2.c
+test/test_runners/TestProductionCode2_Runner.c: test/TestCheck.c
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 66):
-	ruby $(UNITY_ROOT)/auto/generate_test_runner.rb test/TestProductionCode2.c test/test_runners/TestProductionCode2_Runner.c
+	ruby $(UNITY_ROOT)/auto/generate_test_runner.rb test/TestCheck.c test/test_runners/TestCheck_Runner.c
 
-default: ../../src/unity.c src/ProductionCode.c test/TestProductionCode.c test/test_runners/TestProductionCode_Runner.c ../../src/unity.c src/ProductionCode2.c test/TestProductionCode2.c test/test_runners/TestProductionCode2_Runner.c
+# Not a target:
+test/TestCheck.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+default: ../../src/unity.c src/GameOfLife.c test/TestDataStrcture.c test/test_runners/TestDataStructure_Runner.c ../../src/unity.c src/Check.c test/TestCheck.c test/test_runners/TestCheck_Runner.c
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -279,18 +286,18 @@ default: ../../src/unity.c src/ProductionCode.c test/TestProductionCode.c test/t
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-08 21:59:13
+#  Last modified 2022-05-20 21:30:01
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
-src/ProductionCode.c:
+../../src/unity.c:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-../../src/unity.c:
+src/Check.c:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -323,13 +330,13 @@ clean:
 	$(CLEANUP) $(TARGET1) $(TARGET2)
 
 # Not a target:
-test/TestProductionCode.c:
+test/test_runners/TestCheck_Runner.c:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-src/ProductionCode2.c:
+src/GameOfLife.c:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -350,7 +357,13 @@ all: clean default
 # Load=0/32=0%, Rehash=0, Collisions=0/10=0%
 
 # Not a target:
-test/TestProductionCode2.c:
+test/TestDataStrcture.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+test/test_runners/TestDataStructure_Runner.c:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -364,12 +377,12 @@ ci: default
 # variable set hash-table stats:
 # Load=1/32=3%, Rehash=0, Collisions=0/3=0%
 
-test/test_runners/TestProductionCode_Runner.c: test/TestProductionCode.c
+test/test_runners/TestProductionCode_Runner.c: test/TestDataStrcture.c
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 64):
-	ruby $(UNITY_ROOT)/auto/generate_test_runner.rb test/TestProductionCode.c  test/test_runners/TestProductionCode_Runner.c
+	ruby $(UNITY_ROOT)/auto/generate_test_runner.rb test/TestDataStrcture.c  test/test_runners/TestDataStructure_Runner.c
 
 # Not a target:
 .SUFFIXES:
@@ -378,19 +391,19 @@ test/test_runners/TestProductionCode_Runner.c: test/TestProductionCode.c
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=14/1024=1%, Rehash=0, Collisions=0/45=0%
+# Load=16/1024=2%, Rehash=0, Collisions=0/45=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 20 / storage = 310 B / avg = 15 B
-# current buf: size = 8162 B / used = 310 B / count = 20 / avg = 15 B
+# strcache buffers: 1 (0) / strings = 22 / storage = 370 B / avg = 16 B
+# current buf: size = 8162 B / used = 370 B / count = 22 / avg = 16 B
 
-# strcache performance: lookups = 42 / hit rate = 52%
+# strcache performance: lookups = 42 / hit rate = 47%
 # hash-table stats:
-# Load=20/8192=0%, Rehash=0, Collisions=0/42=0%
-# Finished Make data base on Fri May 20 10:31:55 2022
+# Load=22/8192=0%, Rehash=0, Collisions=0/42=0%
+# Finished Make data base on Fri May 20 21:36:58 2022
 
  

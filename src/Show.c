@@ -273,7 +273,7 @@ int title(int round){
 		    .h=50,
 	    };   
 	    //set color and create surface
-	    SDL_Color color={255,69,0,0};
+	    SDL_Color color={230,230,250,0};
 	    intro = TTF_RenderUTF8_Solid_Wrapped(font,message,color,250);
 	    introText= SDL_CreateTextureFromSurface(render, intro);
 	    //clean the render and copy the txture to surface

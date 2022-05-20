@@ -91,7 +91,6 @@ int main(int argc, char **argv){
     title(-1);
     //init SDL window
     InitWindow();
-    move=0;
     //show first stage
     show(Game);
     //show every genertaion of the game

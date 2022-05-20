@@ -21,6 +21,8 @@ int Delay;
 FILE *game;
 //keep track of the step game is running
 int move;
+//used in replay mode
+int rRounds;
 
 /*
   The following part is denfinitions of funtions

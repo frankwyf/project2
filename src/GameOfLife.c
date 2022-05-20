@@ -15,7 +15,7 @@
 //ask the user whether the game should be re-eastablished or not
 void Ask(){
     //ask the user whether to change the size of the game or not
-    printf("Current game is %i X %i and evolve at speed %i milliseconds.\nDo you want to change (enter 'yes' or 'y' if you do)?",Row,Column,Delay);
+    printf("Current game is %i X %i and evolve at speed %i milliseconds.\nDo you want to change (enter 'yes' or 'y' if you do)? ",Row,Column,Delay);
     char Option=getchar();
     //delete redundant keybord input stream
     fflush(stdin); 
@@ -47,7 +47,7 @@ int steps(){
     int i;
     for (i=0;i<strlen(step);i++){
 		if (!isdigit(step[i])){
-			printf("**************\nInvalid Input! try again.\n");
+			printf("**************\nInvalid Input! try again.\n**************\n\n");
 			return -1;
 		}
 		else{continue;}
@@ -55,7 +55,7 @@ int steps(){
     Step=atoi(step);
     //check the number is valid or not 
     if (Step<0){
-        printf("**************\nInvalid Step number!\n");
+        printf("\n**************\nInvalid Step number!\n**************\n\n");
 		return -1;
     }
     if (Step==0){
@@ -63,7 +63,7 @@ int steps(){
         return Step;
     }
     else{
-        printf("The Game of Life will evolute for %i generations.\n",Step);
+        printf("\n*************************\nThe Game of Life will evolute for %i generations.\n*************************\n\n",Step);
         free(step);
         return Step;
     }
@@ -71,7 +71,7 @@ int steps(){
 
 //ask the player how fast it want the game to display
 int delay(){
-    printf("Current game animates every %d milliseconds would you like to change? ");
+    printf("Current game animates every %d milliseconds.\nWould you like to change? ",Delay);
     char fast=getchar();
     //delete redundant keybord input stream
     fflush(stdin); 
@@ -101,7 +101,7 @@ int delay(){
         }
     }
     else{
-        printf("Animation speed (%d millisecond) unchanged!\n");
+        printf("Animation speed (%d millisecond) unchanged!\n",Delay);
         printf("\n----------------------------------------------------------\n\n");
         return Delay;
     }
@@ -119,7 +119,7 @@ int map(){
 	int j;
 	for (j=0;j<strlen(row);j++){
 		if (!isdigit(row[j])){
-			printf("**************\nOnly numbers are allowed!\n\n");
+			printf("\n**************\nOnly numbers are allowed!\n**************\n\n");
 			return 1;
 		}
 		else{continue;}
@@ -139,7 +139,7 @@ int map(){
     column[strlen(column)-1]='\0';//get rid of the '\n' at the last of the input
 	for (j=0;j<strlen(column);j++){
 		if (!isdigit(column[j])){
-			printf("**************\nOnly numbers are allowed!\n");
+			printf("\n**************\nOnly numbers are allowed!\n**************\n\n");
 			return 1;
 		}
 		else{continue;}
@@ -151,7 +151,7 @@ int map(){
     }
     //check the number is valid or not 
     if (Column<1){
-        printf("**************\nInvalid Row number!\n");
+        printf("\n**************\nInvalid Row number!\n**************\n\n");
 		return 1;
     }
     //free the pointers
@@ -169,7 +169,7 @@ int Readfile(FILE *game){
         char temp[1024];
         char *read=fgets(temp,sizeof(temp),game);
         if (read==NULL){
-            printf("**************************\nEmpty game file found. Please configure the game by hand.\n");
+            printf("\n**************************\nEmpty game file found. Please configure the game by hand.\n**********************\n\n");
             return -1;
         }
         temp[strlen(temp)-1]='\0';
@@ -184,7 +184,7 @@ int Readfile(FILE *game){
                         len=strlen(data);
 	                        for (index=0;index<len;index++){
 		                        if (!isdigit(data[index])){
-			                        printf("**************************\nBroken game file found. Please configure the game by hand.\n");
+			                        printf("\n**************************\nBroken game file found. Please configure the game by hand.\n**************************\n\n");
 		                            return -1;
 	                            }
 		                        else{continue;}
@@ -196,7 +196,7 @@ int Readfile(FILE *game){
                         len=strlen(data);
 	                        for (index=0;index<len;index++){
 		                        if (!isdigit(data[index])){
-			                        printf("**************************\nBroken game file found. Please configure the game by hand.\n");
+			                        printf("\n**************************\nBroken game file found. Please configure the game by hand.\n**************************\n\n");
 		                            return -1;
 	                            }
 		                        else{continue;}
@@ -208,7 +208,7 @@ int Readfile(FILE *game){
                         len=strlen(data);
 	                        for (index=0;index<len;index++){
 		                        if (!isdigit(data[index])){
-			                        printf("**************************\nBroken game file found. Please configure the game by hand.\n");
+			                        printf("\n**************************\nBroken game file found. Please configure the game by hand.\n**************************\n\n");
 		                            return -1;
 	                            }
 		                        else{continue;}
@@ -218,7 +218,7 @@ int Readfile(FILE *game){
                         len=strlen(data);
 	                        for (index=0;index<len;index++){
 		                        if (!isdigit(data[index])){
-			                        printf("**************************\nBroken game file found. Please configure the game by hand.\n");
+			                        printf("\n**************************\nBroken game file found. Please configure the game by hand.\n**************************\n\n");
 		                            return -1;
 	                            }
 		                        else{continue;}
@@ -247,12 +247,12 @@ int Readfile(FILE *game){
             for (j=0;j<Column;j++){
                 for (index=0;index<strlen(cell);index++){
                     if (!isdigit(cell[index])){
-                        printf("**************************\nInvalid cell found. Please configure the game by hand.\n");
+                        printf("\n**************************\nInvalid cell found. Please configure the game by hand.\n**************************\n\n");
 		                return -1;
                     }
                 }
                 if (atoi(cell)!=1 && atoi(cell)!=0){
-                    printf("**************************\nInvalid cell found. Please configure the game by hand.\n");
+                    printf("\n**************************\nInvalid cell found. Please configure the game by hand.\n**************************\n\n");
 		            return -1;
                 }
                 else{
@@ -268,7 +268,7 @@ int Readfile(FILE *game){
     else{
         //creat a file named "Game.txt"
         game=fopen("Game.txt","wb");
-        printf("**************************\nGame file lost!\nCreating a new one...\nManually configuration reqiured.\n\n");
+        printf("\n**************************\nGame file lost!\nCreating a new one...\nManually configuration reqiured.\n**************************\n\n");
         fclose(game);
         return -1;
     }
@@ -441,15 +441,17 @@ void ShowGen(){
                         switch (e.key.keysym.sym){
                         case SDLK_RETURN:
                             //replay the game
-                            printf("Rolling Back...\n");
                             Readfile(game);
                             show(Game);
                             ShowGen();
+                            printf("\n==========================\n    Game replay is over.\n==========================\n\n");
                             break;
                         case SDLK_ESCAPE:
-                            printf("Manually terminated at step %i.\n",move-1);
+                            move=move-1;
+                            printf("Manually terminated at step %i.\n",move);
 			                quit = true;
                             Step=move;
+                            rRounds=move;
 			                return;
                         case SDLK_BACKSPACE:
                             //reconfigure the game
@@ -467,9 +469,11 @@ void ShowGen(){
                     //use mouse to press exit button
 		            case SDL_QUIT:
 		            case SDL_MOUSEBUTTONDOWN:
+                        move=move-1;
                         printf("Manually terminated at step %i.\n",move);
 			            quit = true;
                         Step=move;
+                        rRounds=move;
 			            return;
 		        }
 	        }
@@ -481,7 +485,9 @@ void ShowGen(){
                 show(Game);
             }
             else{
-                printf("Terminated at step %i.\n",move-1);
+                move=move-1;
+                printf("Terminated at step %i.\n",move);
+                rRounds=move;
                 quit=true;
             }
         }
@@ -501,17 +507,20 @@ void ShowGen(){
                             Readfile(game);
                             //update the value of step
                             Step=move-1;
+                            rRounds=move-1;
                             show(Game);
                             ShowGen();
-                            printf("==========================\nGame replay is over.Continue eveloving...\n");
+                            printf("\n==========================\nGame replay is over.Continue eveloving...\n==========================\n\n");
                             break;
                         case SDLK_ESCAPE:
-                            printf("Manually terminated at step %i.\n",move-1);
+                            move=move-1;
+                            printf("Manually terminated at step %i.\n",move);
 			                quit = true;
                             Step=move;
+                            rRounds=move;
 			                return;
                         case SDLK_BACKSPACE:
-                        //reconfigure the game
+                            //reconfigure the game
                             printf("Preparing to re-esatblish the game...\n");
                             SDL_DestroyWindow(window);
 	                        SDL_Quit();
@@ -526,9 +535,11 @@ void ShowGen(){
                     //use mouse to press exit button
 		            case SDL_QUIT:
 		            case SDL_MOUSEBUTTONDOWN:
-                        printf("Terminated at step %i.\n",move-1);
+                        move=move-1;
+                        printf("Terminated at step %i.\n",move);
 			            quit = true;
                         Step=move;
+                        rRounds=move;
 			            return;
 		        }
 	        }
@@ -564,6 +575,8 @@ void replay(){
     fflush(stdin);
     if (back=='y'){
         Readfile(game);
+        //updates the value of steps
+        Step=rRounds;
         printf("Step 0:\n");
         PrintMap();
         //init SDL window

@@ -24,7 +24,7 @@ int InitWindow(){
 		"Conway's Game of Life",
 		SDL_WINDOWPOS_CENTERED, 
 		SDL_WINDOWPOS_CENTERED,  //position of the window
-		800, //width of the window
+		600, //width of the window
 		600,  //height of the window
 		SDL_WINDOW_SHOWN //widow is visible
 	);
@@ -49,6 +49,7 @@ int InitWindow(){
 		SDL_MapRGB(surface->format, 123, 123, 122)
 	);
 	SDL_UpdateWindowSurface(window);
+	move=1;
     return 0;
 }
 
@@ -118,7 +119,7 @@ void click(){
 				case SDL_KEYDOWN:
 				    switch(e.key.keysym.sym){
 						case SDLK_RETURN:
-				            printf("Setting over!\n");
+				            printf("\n**********************\n    Setting over!\n**********************\n\n");
 					        setting=false;
 					        SDL_DestroyWindow(window);
 	                        SDL_Quit();
@@ -158,7 +159,7 @@ int title(int round){
 	    }
 	    text=SDL_CreateWindow(
 	        "Result of game",
-		    0,
+		    1000,
 		    0,
 		    200,
 		    200,
@@ -167,8 +168,8 @@ int title(int round){
 		time (&t);//get Unix time
         lt=localtime (&t);//turn into time struct
 		int deaded=Row*Column-alive;
-	    char message[200]=" ";
-	    snprintf(message,sizeof(message),"Alive: %d.  Dead: %d. Step: %d. %d/%d/%d %d:%d:%d",alive,deaded,round,lt->tm_year+1900, lt->tm_mon+1, lt->tm_mday, lt->tm_hour, lt->tm_min, lt->tm_sec);
+	    char message[100]=" ";
+	    snprintf(message,sizeof(message),"Alive: %d.  Dead: %d. Step: %d. %d/%d/%d %d:%d:%d",alive,deaded,round-1,lt->tm_year+1900, lt->tm_mon+1, lt->tm_mday, lt->tm_hour, lt->tm_min, lt->tm_sec);
 		SDL_Rect livecells={
 		    .x=50,
 		    .y=50,
@@ -177,20 +178,14 @@ int title(int round){
 	    };
 		render=SDL_CreateRenderer(text,-1,0);
         //rendering the message
-		SDL_Color livemessage={220,20,60,0};
+		SDL_Color livemessage={173,255,47,0};
 		intro=TTF_RenderText_Solid_Wrapped(font,message,livemessage,100);
 		introText=SDL_CreateTextureFromSurface(render, intro);
 		//clean the render and copy the txture to surface
 	    SDL_RenderClear(render);
 	    SDL_RenderCopy(render,introText,NULL,&livecells);
 	    SDL_RenderPresent(render);
-		bool Quit=false;
-		while (!Quit){
-			while (SDL_PollEvent(&event) != 0) {
-		        SDL_Delay(100);
-				Quit=true;
-			}
-		}
+		SDL_Delay(100);
 		return 0;
 	}
 	//initila a new window to show tips
@@ -234,7 +229,7 @@ int title(int round){
 	    bool Quit=false;
 		while (!Quit){
 			while (SDL_PollEvent(&event) != 0) {
-				SDL_Delay(300);
+				SDL_Delay(200);
 				Quit=true;
 			}
 		}
@@ -269,7 +264,7 @@ int title(int round){
 	//dsiplay goodbye message
 	if (round==-3){
 		char message[200]=" ";
-	    snprintf(message,sizeof(message),"End of Game! Good Bye. %d/%d/%d %d:%d:%d",lt->tm_year+1900, lt->tm_mon+1, lt->tm_mday, lt->tm_hour, lt->tm_min, lt->tm_sec);
+	    snprintf(message,sizeof(message),"End of Game! Good Bye.    %d/%d/%d %d:%d:%d",lt->tm_year+1900, lt->tm_mon+1, lt->tm_mday, lt->tm_hour, lt->tm_min, lt->tm_sec);
 	    //the area to show the message
 	    SDL_Rect welcome={
 		    .x=50,
@@ -278,7 +273,7 @@ int title(int round){
 		    .h=50,
 	    };   
 	    //set color and create surface
-	    SDL_Color color={72,209,204,0};
+	    SDL_Color color={255,69,0,0};
 	    intro = TTF_RenderUTF8_Solid_Wrapped(font,message,color,250);
 	    introText= SDL_CreateTextureFromSurface(render, intro);
 	    //clean the render and copy the txture to surface

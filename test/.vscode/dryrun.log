@@ -1,18 +1,12 @@
 make.exe --dry-run --keep-going --print-directory
 make: Entering directory 'd:/programming_project/CWK2/code/test'
  
-rm -f test1.exe test2.exe
+rm -f datastructure.exe check.exe
  
-make: *** No rule to make target '../../src/unity.c', needed by 'default'.
-
-make: *** No rule to make target 'src/GameOfLife.c', needed by 'default'.
-make: *** No rule to make target 'test/TestDataStrcture.c', needed by 'default'.
-
-make: *** No rule to make target 'test/test_runners/TestDataStructure_Runner.c', needed by 'default'.
-make: *** No rule to make target 'src/Check.c', needed by 'default'.
-
+gcc -Wall -O -I../src -I../unity/src   ../unity/src/unity.c ../src/Check.c ../src/GameOfLife.c ../src/Show.c  TestDataStructure.c  test_runners/TestDataStructure_Runner.c -o datastructure.exe -lSDL2 -lSDL2_ttf 
+gcc -Wall -O -I../src -I../unity/src   ../unity/src/unity.c ../src/Check.c ../src/GameOfLife.c ../src/Show.c TestCheck.c test_runners/TestCheck_Runner.c -o check.exe -lSDL2 -lSDL2_ttf 
+./datastructure.exe
+./check.exe
+ 
 make: Leaving directory 'd:/programming_project/CWK2/code/test'
  
-make: *** No rule to make target 'test/TestCheck.c', needed by 'default'.
-make: *** No rule to make target 'test/test_runners/TestCheck_Runner.c', needed by 'default'.
-

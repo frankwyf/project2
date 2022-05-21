@@ -209,31 +209,6 @@ int title(int round){
 	}
 	//create the render
 	render=SDL_CreateRenderer(text,-1,0);
-	//display welcome message
-	if (round==-2){
-	    //the area to show the message
-	    SDL_Rect welcome={
-		    .x=25,
-		    .y=100,
-		    .w=250,
-		    .h=50,
-	    };   
-	    //set color and create surface
-	    SDL_Color color={0,255,0,0};
-	    intro = TTF_RenderUTF8_Blended_Wrapped(font,"Welcome to conway's game of life!         Game will start soon ...",color,250);
-	    introText= SDL_CreateTextureFromSurface(render, intro);
-	    //clean the render and copy the txture to surface
-	    SDL_RenderClear(render);
-	    SDL_RenderCopy(render,introText,NULL,&welcome);
-	    SDL_RenderPresent(render);
-	    bool Quit=false;
-		while (!Quit){
-			while (SDL_PollEvent(&event) != 0) {
-				SDL_Delay(200);
-				Quit=true;
-			}
-		}
-	}
 	//show tips when playing the game
 	if (round==-1){
 		SDL_Rect tips={
@@ -261,20 +236,18 @@ int title(int round){
 			}
 		}
 	}
-	//dsiplay goodbye message
-	if (round==-3){
-		char message[200]=" ";
-	    snprintf(message,sizeof(message),"End of Game! Good Bye.    %d/%d/%d %d:%d:%d",lt->tm_year+1900, lt->tm_mon+1, lt->tm_mday, lt->tm_hour, lt->tm_min, lt->tm_sec);
+	//display welcome message
+	if (round==-2){
 	    //the area to show the message
 	    SDL_Rect welcome={
-		    .x=50,
+		    .x=25,
 		    .y=100,
 		    .w=250,
 		    .h=50,
 	    };   
 	    //set color and create surface
-	    SDL_Color color={230,230,250,0};
-	    intro = TTF_RenderUTF8_Solid_Wrapped(font,message,color,250);
+	    SDL_Color color={0,255,0,0};
+	    intro = TTF_RenderUTF8_Blended_Wrapped(font,"Welcome to conway's game of life!         Game will start soon ...",color,250);
 	    introText= SDL_CreateTextureFromSurface(render, intro);
 	    //clean the render and copy the txture to surface
 	    SDL_RenderClear(render);
@@ -287,6 +260,85 @@ int title(int round){
 				Quit=true;
 			}
 		}
+	}
+	//dsiplay goodbye message
+	if (round==-3){
+		char message[200]=" ";
+	    snprintf(message,sizeof(message),"End of Game! Good Bye.    %d/%d/%d %d:%d:%d",lt->tm_year+1900, lt->tm_mon+1, lt->tm_mday, lt->tm_hour, lt->tm_min, lt->tm_sec);
+	    //the area to show the message
+	    SDL_Rect goodbye={
+		    .x=50,
+		    .y=100,
+		    .w=250,
+		    .h=50,
+	    };   
+	    //set color and create surface
+	    SDL_Color color={230,230,250,0};
+	    intro = TTF_RenderUTF8_Solid_Wrapped(font,message,color,250);
+	    introText= SDL_CreateTextureFromSurface(render, intro);
+	    //clean the render and copy the txture to surface
+	    SDL_RenderClear(render);
+	    SDL_RenderCopy(render,introText,NULL,&goodbye);
+	    SDL_RenderPresent(render);
+	    bool Quit=false;
+		while (!Quit){
+			while (SDL_PollEvent(&event) != 0) {
+				SDL_Delay(200);
+				Quit=true;
+			}
+		}
+	}
+	//display tips for players when stopped during the game for replay
+	if (round==-4){
+		char message[200]=" ";
+	    snprintf(message,sizeof(message),"Replay will start soon...    %d/%d/%d %d:%d:%d",lt->tm_year+1900, lt->tm_mon+1, lt->tm_mday, lt->tm_hour, lt->tm_min, lt->tm_sec);
+	    //the area to show the message
+	    SDL_Rect replaying={
+		    .x=50,
+		    .y=100,
+		    .w=250,
+		    .h=50,
+	    };   
+	    //set color and create surface
+	    SDL_Color color={0,255,255,0};
+	    intro = TTF_RenderUTF8_Solid_Wrapped(font,message,color,250);
+	    introText= SDL_CreateTextureFromSurface(render, intro);
+	    //clean the render and copy the txture to surface
+	    SDL_RenderClear(render);
+	    SDL_RenderCopy(render,introText,NULL,&replaying);
+	    SDL_RenderPresent(render);
+		SDL_Delay(1000);
+	    SDL_DestroyWindow(text); 
+    	SDL_DestroyRenderer(render);
+	    SDL_DestroyTexture(introText);
+	    SDL_FreeSurface(intro);
+		return 0;
+	}
+	//display tips for players when stopped during the game for re-initialize
+	if (round==-5){
+		char message[200]=" ";
+	    snprintf(message,sizeof(message),"Re-establish the game by click on the boxes. Press enter when finised.            %d/%d/%d %d:%d:%d",lt->tm_year+1900, lt->tm_mon+1, lt->tm_mday, lt->tm_hour, lt->tm_min, lt->tm_sec);
+	    //the area to show the message
+	    SDL_Rect reesatblish={
+		    .x=30,
+		    .y=100,
+		    .w=250,
+		    .h=80,
+	    };   
+	    //set color and create surface
+	    SDL_Color color={0,255,255,0};
+	    intro = TTF_RenderUTF8_Solid_Wrapped(font,message,color,250);
+	    introText= SDL_CreateTextureFromSurface(render, intro);
+	    //clean the render and copy the txture to surface
+	    SDL_RenderClear(render);
+	    SDL_RenderCopy(render,introText,NULL,&reesatblish);
+	    SDL_RenderPresent(render);
+	    SDL_Delay(2000);
+	    SDL_DestroyWindow(text); 
+    	SDL_DestroyRenderer(render);
+	    SDL_DestroyTexture(introText);
+	    SDL_FreeSurface(intro);
+		return 0;
 	}
 	TTF_CloseFont(font);
 	TTF_Quit();

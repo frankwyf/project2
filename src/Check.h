@@ -11,4 +11,5 @@ int CheckUpRight(int **Game,int i,int j);
 int CheckUpLeft(int **Game,int i,int j);
 int CheckDownLeft(int **Game,int i,int j);
 int CheckDownRight(int **Game,int i,int j);
+
 #endif

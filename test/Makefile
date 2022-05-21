@@ -20,47 +20,40 @@ C_COMPILER=clang
 endif
 
 UNITY_ROOT=../unity
+SRCs=../
 
-CFLAGS=-std=c89
-CFLAGS += -Wall
-CFLAGS += -Wextra
-CFLAGS += -Wpointer-arith
-CFLAGS += -Wcast-align
-CFLAGS += -Wwrite-strings
-CFLAGS += -Wswitch-default
-CFLAGS += -Wunreachable-code
-CFLAGS += -Winit-self
-CFLAGS += -Wmissing-field-initializers
-CFLAGS += -Wno-unknown-pragmas
-CFLAGS += -Wstrict-prototypes
-CFLAGS += -Wundef
-CFLAGS += -Wold-style-definition
+CFLAGS = -Wall -O
+
 #CFLAGS += -Wno-misleading-indentation
 
-TARGET_BASE1=test1
-TARGET_BASE2=test2
+TARGET_BASE1=datastructure
+TARGET_BASE2=check
 TARGET1 = $(TARGET_BASE1)$(TARGET_EXTENSION)
 TARGET2 = $(TARGET_BASE2)$(TARGET_EXTENSION)
-SRC_FILES1=$(UNITY_ROOT)/src/unity.c ../src/GameOfLife.c  ../test/TestDataStrcture.c  ../test/test_runners/TestDataStructure_Runner.c
-SRC_FILES2=$(UNITY_ROOT)/src/unity.c ../src/Check.c ../test/TestCheck.c ../test/test_runners/TestCheck_Runner.c
-INC_DIRS=-Isrc -I$(UNITY_ROOT)/src
-SYMBOLS=
+SRC_FILES1=$(UNITY_ROOT)/src/unity.c ../src/Check.c ../src/GameOfLife.c ../src/Show.c  TestDataStructure.c  test_runners/TestDataStructure_Runner.c
+SRC_FILES2=$(UNITY_ROOT)/src/unity.c ../src/Check.c ../src/GameOfLife.c ../src/Show.c TestCheck.c test_runners/TestCheck_Runner.c
+INC_DIRS=-I$(SRCs)src -I$(UNITY_ROOT)/src 
+LIBS =   -lSDL2 -lSDL2_ttf 
+
+SDLDIR = D:\SDL2
 
 all: clean default
 
 default: $(SRC_FILES1) $(SRC_FILES2)
-	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) $(SRC_FILES1) -o $(TARGET1)
-	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) $(SRC_FILES2) -o $(TARGET2)
+	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) $(SRC_FILES1) -o $(TARGET1) $(LIBS)
+	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) $(SRC_FILES2) -o $(TARGET2) $(LIBS)
 	- ./$(TARGET1)
 	- ./$(TARGET2)
 
-test/test_runners/TestProductionCode_Runner.c: test/TestDataStrcture.c
-	ruby $(UNITY_ROOT)/auto/generate_test_runner.rb ../test/TestDataStrcture.c  test_runners/TestDataStructure_Runner.c
-test/test_runners/TestProductionCode2_Runner.c: test/TestCheck.c
-	ruby $(UNITY_ROOT)/auto/generate_test_runner.rb ../test/TestCheck.c test_runners/TestCheck_Runner.c
+
+test_runners/TestDataStructure_Runner.c: TestDataStructure.c
+	ruby $(UNITY_ROOT)/auto/generate_test_runner.rb TestDataStructure.c  test_runners/TestDataStructure_Runner.c
+test_runners/TestCheck_Runner.c: TestCheck.c
+	ruby $(UNITY_ROOT)/auto/generate_test_runner.rb TestCheck.c test_runners/TestCheck_Runner.c
+
 
 clean:
 	$(CLEANUP) $(TARGET1) $(TARGET2)
 
-ci: CFLAGS += -Werror
+
 ci: default

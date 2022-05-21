@@ -6,13 +6,11 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri May 20 21:36:58 2022
+# Make data base, printed on Sun May 22 01:16:28 2022
 
 # Variables
 
-# environment
-FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
-# makefile (from 'Makefile', line 23)
+# makefile (from 'Makefile', line 17)
 C_COMPILER = gcc
 # environment
 SYSTEMDRIVE = C:
@@ -20,7 +18,7 @@ SYSTEMDRIVE = C:
 JAVA_HOME = C:\Users\frank\.jdks\openjdk-17.0.2
 # environment
 LC_ALL = C
-# makefile (from 'Makefile', line 16)
+# makefile (from 'Makefile', line 10)
 TARGET_EXTENSION = .exe
 # environment
 USERPROFILE = C:\Users\frank
@@ -29,13 +27,15 @@ C_INCLUDE_PATH = D:\SDL2-2.0.20\x86_64-w64-mingw32\include
 # environment
 LOCALAPPDATA = C:\Users\frank\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-41cf9c7f-dadc-4e1d-b318-8afba8011795-sock
-# makefile (from 'Makefile', line 47)
-TARGET_BASE2 = test2
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-4aa16d7e-ade0-4f3d-95a4-0ce7d78beb3e-sock
+# makefile (from 'Makefile', line 30)
+TARGET_BASE2 = check
 # environment
 VSCODE_CWD = D:\Microsoft VS Code
 # environment
 SYSTEMROOT = C:\WINDOWS
+# makefile (from 'Makefile', line 36)
+LIBS = -lSDL2 -lSDL2_ttf 
 # environment
 PROCESSOR_LEVEL = 6
 # environment
@@ -45,9 +45,7 @@ MAKE_COMMAND := make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_11316_VAQCLFAOYTJGOLNZ
-# environment
-FPS_BROWSER_USER_PROFILE_STRING = Default
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_63800_UZYXWBZZDFKBDEBZ
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -61,7 +59,7 @@ VSCODE_LOG_STACK = false
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = C:\Users\frank\AppData\Roaming\Code\CachedData\da15b6fd3ef856477bf6f4fb29ba1b7af717770d
+VSCODE_CODE_CACHE_PATH = C:\Users\frank\AppData\Roaming\Code\CachedData\c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
 # environment
 LANG = C
 # default
@@ -80,11 +78,10 @@ CURDIR := d:/programming_project/CWK2/code/test
 VSCODE_PIPE_LOGGING = true
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
-# makefile (from 'Makefile', line 48)
+# makefile (from 'Makefile', line 31)
 TARGET1 = $(TARGET_BASE1)$(TARGET_EXTENSION)
 # automatic
-*D = $(pats 
-ubst %/,%,$(patsubst %\,%,$(dir $*)))
+*D = $(patsubst %/,%,$(patsubst %\,%,$(dir $*)))
 # environment
 PROGRAMFILES = C:\Program Files
 # environment
@@ -101,10 +98,10 @@ MAKEFILE_LIST := Makefile
 @F = $(notdir $@)
 # environment
 VSCODE_VERBOSE_LOGGING = true
-# makefile (from 'Makefile', line 28)
-UNITY_ROOT = ../..
+# makefile (from 'Makefile', line 22)
+UNITY_ROOT = ../unity
 # environment
-VSCODE_PID = 11316
+VSCODE_PID = 63800
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -112,7 +109,8 @@ VSCODE_PID = 11316
 # automatic
 <D = $(patsubst %/,%,$(patsubst %\,%,$(dir $<)))
 # environment
-VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"42e84e0914b17800d483f69e299e1b00.zh-cn","_translationsConfigFile":"C:\\Users\\frank\\AppData\\Roaming\\Code\\clp\\42e84e0914b17800d483f69e299e1b00.zh-cn\\tcf.json","_cacheRoot":"C:\\Users\\frank\\AppData\\Roaming\\Code\\clp\\42e84e0914b17800d483f69e299e1b00.zh-cn","_resolvedLanguagePackCoreLocation":"C:\\Users\\frank\\AppData\\Roaming\\Code\\clp\\42e84e0914b17800d483f69e299e1b00.zh-cn\\da15b6fd3ef856477bf6f4fb29ba1b7af717770d","_corruptedFile":"C:\\Users\\frank\\AppData\\Roaming\\Code\\clp\\42e84e0914b17800d483f69e299e1b00.zh-cn\\corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"42e84e0914b17800d483f69e299e1b00.zh-cn","_translationsConfigFile":"C:\\Users\\frank\\AppData\\Roaming\\Code\\clp\\42e84e0914b17800d483f69e299e1b00.zh-cn\\tcf.json","_cacheRoot":"C:\\Users\\frank\\AppData\\Roaming\\Code\\clp\\42e84e0914b17800d483f69e299e1b00.zh-cn","_resolvedLanguagePackCoreLocation":"C:\\Users\\frank\\AppDat 
+a\\Roaming\\Code\\clp\\42e84e0914b17800d483f69e299e1b00.zh-cn\\c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5","_corruptedFile":"C:\\Users\\frank\\AppData\\Roaming\\Code\\clp\\42e84e0914b17800d483f69e299e1b00.zh-cn\\corrupted.info","_languagePackSupport":true}
 # environment
 ONEDRIVECONSUMER = C:\Users\frank\OneDrive
 # default
@@ -135,14 +133,12 @@ COMSPEC = C:\WINDOWS\system32\cmd.exe
 WINDIR = C:\WINDOWS
 # environment
 MAKELEVEL := 0
-# makefile (from 'Makefile', line 14)
+# makefile (from 'Makefile', line 8)
 MKDIR = mkdir -p
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = C:\Program Files\Common Files\Oracle\Java\javapath;D:\bin\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\Git\cmd;C:\cygwin64\bin;C:\Users\frank\.jdks\openjdk-17.0.2;D:\SDL2\x86_64-w64-mingw32\bin;D:\SDL2\x86_64-w64-mingw32\include;D:\SDL2\x86_64-w64-mingw32\lib;D:\mingw64\bin;D:\SDL2;D:\SDL2_ttf;D:\Scripts\;D:\;C:\Users\frank\AppData\Local\Microsoft\WindowsApps;D:\Python\PyCharm 2020.3\bin;C:\Users\frank\.dotnet\tools;C:\Users\frank\AppData\Local\atom\bin;D:\Microsoft VS Code\bin;D:\mingw64\bin;D:\c compiler\mingw64\bin;D:\GNUmake\make-4.3\GccRel;C:\Users\frank\AppData\Local\Microsoft\WindowsApps;D:\IntelliJ IDEA 2021.3.2\bin;;C:\Users\frank\.jdks\openjdk-17.0.2;D:\SDL2\x86_64-w64-mingw32\bin;
-# makefile (from 'Makefile', line 53)
-SYMBOLS = 
+PATH = C:\Program Files\Common Files\Oracle\Java\javapath;D:\bin\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\Git\cmd;C:\cygwin64\bin;C:\Users\frank\.jdks\openjdk-17.0.2;D:\SDL2\x86_64-w64-mingw32\bin;D:\SDL2\x86_64-w64-mingw32\include;D:\SDL2\x86_64-w64-mingw32\lib;D:\mingw64\bin;D:\SDL2;D:\SDL2_ttf;D:\Ruby31-x64\bin;D:\Ruby31-x64\bin;D:\Scripts\;D:\;C:\Users\frank\AppData\Local\Microsoft\WindowsApps;D:\Python\PyCharm 2020.3\bin;C:\Users\frank\.dotnet\tools;C:\Users\frank\AppData\Local\atom\bin;D:\Microsoft VS Code\bin;D:\mingw64\bin;D:\c compiler\mingw64\bin;D:\GNUmake\make-4.3\GccRel;C:\Users\frank\AppData\Local\Microsoft\WindowsApps;D:\IntelliJ IDEA 2021.3.2\bin;;C:\Users\frank\.jdks\openjdk-17.0.2;D:\SDL2\x86_64-w64-mingw32\bin
 # environment
 COMPUTERNAME = LAPTOP-4T5Q1COJ
 # default
@@ -159,7 +155,7 @@ INTELLIJ IDEA = D:\IntelliJ IDEA 2021.3.2\bin;
 LOGONSERVER = \\LAPTOP-4T5Q1COJ
 # environment
 VSCODE_LOG_NATIVE = false
-# makefile (from 'Makefile', line 13)
+# makefile (from 'Makefile', line 7)
 CLEANUP = rm -f
 # environment
 USERNAME = frank
@@ -170,7 +166,7 @@ COMMONPROGRAMFILES = C:\Program Files\Common Files
 # environment
 PROGRAMW6432 = C:\Program Files
 # environment
-PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW
 # automatic
 +F = $(notdir $+)
 # environment
@@ -181,12 +177,14 @@ USERDOMAIN = LAPTOP-4T5Q1COJ
 GNUMAKEFLAGS := 
 # environment
 OS = Windows_NT
-# makefile (from 'Makefile', line 50)
-SRC_FILES1 = $(UNITY_ROOT)/src/unity.c src/GameOfLife.c  test/TestDataStrcture.c  test/test_runners/TestDataStructure_Runner.c
+# makefile (from 'Makefile', line 33)
+SRC_FILES1 = $(UNITY_ROOT)/src/unity.c ../src/Check.c ../src/GameOfLife.c ../src/Show.c  TestDataStructure.c  test_runners/TestDataStructure_Runner.c
+# environment
+__COMPAT_LAYER = DetectorsAppHealth
 # makefile
 .DEFAULT_GOAL := all
-# makefile (from 'Makefile', line 51)
-SRC_FILES2 = $(UNITY_ROOT)/src/unity.c src/Check.c test/TestCheck.c test/test_runners/TestCheck_Runner.c
+# makefile (from 'Makefile', line 34)
+SRC_FILES2 = $(UNITY_ROOT)/src/unity.c ../src/Check.c ../src/GameOfLife.c ../src/Show.c TestCheck.c test_runners/TestCheck_Runner.c
 # environment
 LIBRARY_PATH = D:\SDL2-2.0.20\x86_64-w64-mingw32\lib
 # default
@@ -201,16 +199,18 @@ USERDOMAIN_ROAMINGPROFILE = LAPTOP-4T5Q1COJ
 NUMBER_OF_PROCESSORS = 8
 # environment
 PUBLIC = C:\Users\Public
-# makefile (from 'Makefile', line 46)
-TARGET_BASE1 = test1
+# makefile (from 'Makefile', line 29)
+TARGET_BASE1 = datastructure
 # environment
 APPDATA = C:\Users\frank\AppData\Roaming
-# makefile (from 'Makefile', line 43)
-CFLAGS = -std=c89 -Wall -Wextra -Wpointer-arith -Wcast-align -Wwrite-strings -Wswitch-default -Wunreachable-code -Winit-self -Wmissing-field-initializers -Wno-unknown-pragmas -Wstrict-prototypes -Wundef -Wold-style-definition
+# makefile (from 'Makefile', line 25)
+CFLAGS = -Wall -O
 # environment
 HOMEDRIVE = C:
 # environment
 PROCESSOR_ARCHITECTURE = AMD64
+# makefile (from 'Makefile', line 38)
+SDLDIR = D:\SDL2
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -220,14 +220,16 @@ ELECTRON_RUN_AS_NODE = 1
 # environment
 TEMP = C:\Users\frank\AppData\Local\Temp
 # environment
-VSCODE_IPC_HOOK = \\.\pipe\dd0a82a4bb4aadd2aeae6af91e3e2630-1.67.1-main-sock
-# makefile (from 'Makefile', line 52)
-INC_DIRS = -Isrc -I$(UNITY_ROOT)/src
+VSCODE_IPC_HOOK = \\.\pipe\dd0a82a4bb4aadd2aeae6af91e3e2630-1.67.2-main-sock
+# makefile (from 'Makefile', line 23)
+SRCs = ../
+# makefile (from 'Makefile', line 35)
+INC_DIRS = -I$(SRCs)src -I$(UNITY_ROOT)/src 
 # default
 .RECIPEPREFIX := 
 # automatic
 <F = $(notdir $<)
-# makefile (from 'Makefile', line 49)
+# makefile (from 'Makefile', line 32)
 TARGET2 = $(TARGET_BASE2)$(TARGET_EXTENSION)
 # default
 SUFFIXES := 
@@ -242,7 +244,7 @@ PROCESSOR_REVISION = 7e05
 # environment
 PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 126 Stepping 5, GenuineIntel
 # variable set hash-table stats:
-# Load=115/1024=11%, Rehash=0, Collisions=13/192=7%
+# Load=116/1024=11%, Rehash=0, Collisions=12/166=7%
 
 # Pattern-specific Variable Values
 
@@ -250,9 +252,9 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 126 Stepping 5, GenuineIntel
 
 # Directories
 
-# . (key d:/programming_project/CWK2/code/test, mtime 1653053067): 7 files, no impossibilities.
+# . (key d:/programming_project/CWK2/code/test, mtime 1653153362): 10 files, no impossibilities.
 
-# 7 files, no impossibilities in 1 directories.
+# 10 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -260,47 +262,34 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 126 Stepping 5, GenuineIntel
 
 # Files
 
-test/test_runners/TestProductionCode2_Runner.c: test/TestCheck.c
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 66):
-	ruby $(UNITY_ROOT)/auto/generate_test_runner.rb test/TestCheck.c test/test_runners/TestCheck_Runner.c
-
 # Not a target:
-test/TestCheck.c:
+../src/Check.c:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-default: ../../src/unity.c src/GameOfLife.c test/TestDataStrcture.c test/test_runners/TestDataStructure_Runner.c ../../src/unity.c src/Check.c test/TestCheck.c test/test_runners/TestCheck_Runner.c
+default: ../unity/src/unity.c ../src/Check.c ../src/GameOfLife.c ../src/Show.c TestDataStructure.c test_runners/TestDataStructure_Runner.c ../unity/src/unity.c ../src/Check.c ../src/GameOfLife.c ../src/Show.c TestCheck.c test_runners/TestCheck_Runner.c
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 58):
-	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) $(SRC_FILES1) -o $(TARGET1)
-	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) $(SRC_FILES2) -o $(TARGET2)
+#  recipe to execute (from 'Makefile', line 43):
+	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) $(SRC_FILES1) -o $(TARGET1) $(LIBS)
+	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) $(SRC_FILES2) -o $(TARGET2) $(LIBS)
 	- ./$(TARGET1)
 	- ./$(TARGET2)
 
 # Not a target:
+TestDataStructure.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-20 21:30:01
+#  Last modified 2022-05-22 01:15:13
 #  File has been updated.
 #  Successfully updated.
-
-# Not a target:
-../../src/unity.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-src/Check.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
 
 clean:
 #  Implicit rule search has not been done.
@@ -326,20 +315,21 @@ clean:
 # | := 
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=2/18=11%
-#  recipe to execute (from 'Makefile', line 69):
+#  recipe to execute (from 'Makefile', line 56):
 	$(CLEANUP) $(TARGET1) $(TARGET2)
 
 # Not a target:
-test/test_runners/TestCheck_Runner.c:
+TestCheck.c:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-src/GameOfLife.c:
+test_runners/TestDataStructure_Runner.c: TestDataStructure.c
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+#  recipe to execute (from 'Makefile', line 50):
+	ruby $(UNITY_ROOT)/auto/generate_test_runner.rb TestDataStructure.c  test_runners/TestDataStructure_Runner.c
 
 # Not a target:
 .DEFAULT:
@@ -357,32 +347,15 @@ all: clean default
 # Load=0/32=0%, Rehash=0, Collisions=0/10=0%
 
 # Not a target:
-test/TestDataStrcture.c:
+../src/Show.c:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-test/test_runners/TestDataStructure_Runner.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# makefile (from 'Makefile', line 71)
-ci: CFLAGS += -Werror
 ci: default
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-# variable set hash-table stats:
-# Load=1/32=3%, Rehash=0, Collisions=0/3=0%
-
-test/test_runners/TestProductionCode_Runner.c: test/TestDataStrcture.c
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 64):
-	ruby $(UNITY_ROOT)/auto/generate_test_runner.rb test/TestDataStrcture.c  test/test_runners/TestDataStructure_Runner.c
 
 # Not a target:
 .SUFFIXES:
@@ -390,20 +363,39 @@ test/test_runners/TestProductionCode_Runner.c: test/TestDataStrcture.c
 #  Modification time never checked.
 #  File has not been updated.
 
+# Not a target:
+../src/GameOfLife.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+../unity/src/unity.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+test_runners/TestCheck_Runner.c: TestCheck.c
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 52):
+	ruby $(UNITY_ROOT)/auto/generate_test_runner.rb TestCheck.c test_runners/TestCheck_Runner.c
+
 # files hash-table stats:
-# Load=16/1024=2%, Rehash=0, Collisions=0/45=0%
+# Load=15/1024=1%, Rehash=0, Collisions=3/48=6%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 22 / storage = 370 B / avg = 16 B
-# current buf: size = 8162 B / used = 370 B / count = 22 / avg = 16 B
+# strcache buffers: 1 (0) / strings = 22 / storage = 276 B / avg = 12 B
+# current buf: size = 8162 B / used = 276 B / count = 22 / avg = 12 B
 
-# strcache performance: lookups = 42 / hit rate = 47%
+# strcache performance: lookups = 47 / hit rate = 53%
 # hash-table stats:
-# Load=22/8192=0%, Rehash=0, Collisions=0/42=0%
-# Finished Make data base on Fri May 20 21:36:58 2022
+# Load=22/8192=0%, Rehash=0, Collisions=3/47=6%
+# Finished Make data base on Sun May 22 01:16:28 2022
 
  

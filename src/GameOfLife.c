@@ -71,7 +71,7 @@ int steps(){
 
 //ask the player how fast it want the game to display
 int delay(){
-    printf("Current game animates every %d milliseconds.\nWould you like to change? ",Delay);
+    printf("\nCurrent game animates every %d milliseconds.\nWould you like to change? ",Delay);
     char fast=getchar();
     //delete redundant keybord input stream
     fflush(stdin); 
@@ -286,7 +286,7 @@ void initialGame(){
             Game[i][j]=rand()%2;
         }
     }
-    printf("Would you like to re-establish the game? (y/n)");
+    printf("\nWould you like to re-establish the game? (y/n)");
     char reset=getchar();
     //delete redundant keybord input stream
     fflush(stdin); 
@@ -362,6 +362,7 @@ void ShowGen(){
                         switch (e.key.keysym.sym){
                         case SDLK_RETURN:
                             //replay the game
+                            title(-4);
                             Readfile(game);
                             show(Game);
                             ShowGen();
@@ -377,6 +378,7 @@ void ShowGen(){
                         case SDLK_BACKSPACE:
                             //reconfigure the game
                             printf("Preparing to re-esatblish the game...\n");
+                            title(-5);
                             SDL_DestroyWindow(window);
 	                        SDL_Quit();
                             click();
@@ -424,6 +426,7 @@ void ShowGen(){
 		            case SDL_KEYDOWN:
                         switch (e.key.keysym.sym){
                         case SDLK_RETURN:
+                            title(-4);
                             //replay the game
                             Readfile(game);
                             //update the value of step
@@ -443,6 +446,7 @@ void ShowGen(){
                         case SDLK_BACKSPACE:
                             //reconfigure the game
                             printf("Preparing to re-esatblish the game...\n");
+                            title(-5);
                             SDL_DestroyWindow(window);
 	                        SDL_Quit();
                             click();

@@ -66,7 +66,7 @@ int main(int argc, char **argv){
         }
         else{
             if (Row==atoi(argv[1]) && Column==atoi(argv[2])){
-                printf("Same size as last game!\n");
+                printf("\n********************\nSame size as last game!\n********************\n\n");
             }
             else{
                 Row=atoi(argv[1]);

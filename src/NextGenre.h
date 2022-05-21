@@ -8,4 +8,5 @@
 int Evolution(int **Game, int i, int j);
 void NextGen(int **Game);
 void ShowGen();
+
 #endif

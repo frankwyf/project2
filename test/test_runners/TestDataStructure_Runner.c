@@ -2,23 +2,15 @@
 
 /*=======Automagically Detected Files To Include=====*/
 #include "unity.h"
-#include "Check.h"
 #include "DataStructure.h"
-#include "NextGenre.h"
-#include <stdlib.h>
 
 /*=======External Functions This Runner Calls=====*/
 extern void setUp(void);
 extern void tearDown(void);
-extern void test_Checkup(void);
-extern void test_Checkdown(void);
-extern void test_Checkleft(void);
-extern void test_Checkright(void);
-extern void test_Checkupleft(void);
-extern void test_Checkupright(void);
-extern void test_Checkdownleft(void);
-extern void test_Checkdownright(void);
-extern void test_evolution(void);
+extern void test_Readfile_CorrectFile(void);
+extern void test_stepAnddelay_validinput(void);
+extern void test_stepAnddelay_Invalidinput(void);
+extern void test_map_validinput(void);
 
 
 /*=======Mock Management=====*/
@@ -81,16 +73,11 @@ static void run_test(UnityTestFunction func, const char* name, int line_num)
 /*=======MAIN=====*/
 int main(void)
 {
-  UnityBegin("TestCheck.c");
-  run_test(test_Checkup, "test_Checkup", 22);
-  run_test(test_Checkdown, "test_Checkdown", 28);
-  run_test(test_Checkleft, "test_Checkleft", 34);
-  run_test(test_Checkright, "test_Checkright", 40);
-  run_test(test_Checkupleft, "test_Checkupleft", 46);
-  run_test(test_Checkupright, "test_Checkupright", 52);
-  run_test(test_Checkdownleft, "test_Checkdownleft", 58);
-  run_test(test_Checkdownright, "test_Checkdownright", 64);
-  run_test(test_evolution, "test_evolution", 71);
+  UnityBegin("TestDataStructure.c");
+  run_test(test_Readfile_CorrectFile, "test_Readfile_CorrectFile", 16);
+  run_test(test_stepAnddelay_validinput, "test_stepAnddelay_validinput", 24);
+  run_test(test_stepAnddelay_Invalidinput, "test_stepAnddelay_Invalidinput", 32);
+  run_test(test_map_validinput, "test_map_validinput", 41);
 
   return UnityEnd();
 }

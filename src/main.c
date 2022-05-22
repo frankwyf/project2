@@ -112,6 +112,11 @@ int main(int argc, char **argv){
         time (&t);//get Unix time
         lt = localtime (&t);//turn into time struct
         printf("Game saved at: %d/%d/%d %d:%d:%d\n",lt->tm_year+1900, lt->tm_mon+1, lt->tm_mday, lt->tm_hour, lt->tm_min, lt->tm_sec);
+    }
+    int i;
+    for (i=0;i<Row;i++){
+        free(Game[i]);
     } 
+    free(game);
     return 0;
 }

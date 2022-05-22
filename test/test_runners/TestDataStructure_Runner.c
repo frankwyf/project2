@@ -7,9 +7,13 @@
 /*=======External Functions This Runner Calls=====*/
 extern void setUp(void);
 extern void tearDown(void);
-extern void test_Readfile_CorrectFile(void);
+extern void test_Readfile_emptyFile(void);
+extern void test_Readfile_badFile(void);
+extern void test_Readfile_NoFile(void);
 extern void test_stepAnddelay_validinput(void);
 extern void test_stepAnddelay_Invalidinput(void);
+extern void test_map_invalidinput(void);
+extern void test_map_invalidinput_toolarge(void);
 extern void test_map_validinput(void);
 
 
@@ -74,10 +78,14 @@ static void run_test(UnityTestFunction func, const char* name, int line_num)
 int main(void)
 {
   UnityBegin("TestDataStructure.c");
-  run_test(test_Readfile_CorrectFile, "test_Readfile_CorrectFile", 16);
-  run_test(test_stepAnddelay_validinput, "test_stepAnddelay_validinput", 24);
-  run_test(test_stepAnddelay_Invalidinput, "test_stepAnddelay_Invalidinput", 32);
-  run_test(test_map_validinput, "test_map_validinput", 41);
+  run_test(test_Readfile_emptyFile, "test_Readfile_emptyFile", 18);
+  run_test(test_Readfile_badFile, "test_Readfile_badFile", 24);
+  run_test(test_Readfile_NoFile, "test_Readfile_NoFile", 30);
+  run_test(test_stepAnddelay_validinput, "test_stepAnddelay_validinput", 36);
+  run_test(test_stepAnddelay_Invalidinput, "test_stepAnddelay_Invalidinput", 44);
+  run_test(test_map_invalidinput, "test_map_invalidinput", 50);
+  run_test(test_map_invalidinput_toolarge, "test_map_invalidinput_toolarge", 55);
+  run_test(test_map_validinput, "test_map_validinput", 62);
 
   return UnityEnd();
 }

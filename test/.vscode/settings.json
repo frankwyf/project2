@@ -1,9 +1,0 @@
-{
-    "makefile.extensionOutputFolder": "./.vscode",
-    "files.associations": {
-        "datastructure.h": "c",
-        "unity.h": "c",
-        "nextgenre.h": "c",
-        "check.h": "c"
-    }
-}

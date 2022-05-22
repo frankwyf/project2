@@ -2,9 +2,9 @@
 
 /*=======Automagically Detected Files To Include=====*/
 #include "unity.h"
-#include "Check.h"
-#include "DataStructure.h"
-#include "NextGenre.h"
+#include "../src/Check.h"
+#include "../src/DataStructure.h"
+#include "../src/NextGenre.h"
 #include <stdlib.h>
 
 /*=======External Functions This Runner Calls=====*/
@@ -82,15 +82,15 @@ static void run_test(UnityTestFunction func, const char* name, int line_num)
 int main(void)
 {
   UnityBegin("TestCheck.c");
-  run_test(test_Checkup, "test_Checkup", 22);
-  run_test(test_Checkdown, "test_Checkdown", 28);
-  run_test(test_Checkleft, "test_Checkleft", 34);
-  run_test(test_Checkright, "test_Checkright", 40);
-  run_test(test_Checkupleft, "test_Checkupleft", 46);
-  run_test(test_Checkupright, "test_Checkupright", 52);
-  run_test(test_Checkdownleft, "test_Checkdownleft", 58);
-  run_test(test_Checkdownright, "test_Checkdownright", 64);
-  run_test(test_evolution, "test_evolution", 71);
+  run_test(test_Checkup, "test_Checkup", 33);
+  run_test(test_Checkdown, "test_Checkdown", 39);
+  run_test(test_Checkleft, "test_Checkleft", 45);
+  run_test(test_Checkright, "test_Checkright", 51);
+  run_test(test_Checkupleft, "test_Checkupleft", 57);
+  run_test(test_Checkupright, "test_Checkupright", 63);
+  run_test(test_Checkdownleft, "test_Checkdownleft", 69);
+  run_test(test_Checkdownright, "test_Checkdownright", 75);
+  run_test(test_evolution, "test_evolution", 82);
 
   return UnityEnd();
 }
